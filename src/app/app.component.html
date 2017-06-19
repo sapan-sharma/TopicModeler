@@ -1,0 +1,59 @@
+<div class="skype-wrapper">
+<div class="skype-container" style="height: 588px;">
+
+<!-- Conversation display -->
+<div class="skype-chat-content">
+
+    <table style="width: 100%">
+        <tr *ngFor="let row of queue">
+            <td [ngStyle]="row.style">
+                <p>
+                    <span>{{row.user}}</span>
+                </p>
+                <p [ngStyle]="row.style">
+                        <span class="user-comment">
+                            {{row.value}}
+                        </span>                        
+                        <span class="fa fa-check text-muted" [ngStyle]='row.sentStyle'></span>
+                </p>
+                <div [ngStyle]='row.btnStyle'>   
+                    
+                    <div class="row">
+                        <div class="col card-group" *ngFor="let pd of row.pageUrls; let i=index">       
+                            <div class="card rounded">
+                                <div class="card-block">                                    
+                                    <p class="small" style="color:black">{{ row.texts[i] }}</p>                                    
+                                    <a type="button rounded" class="btn btn-success btn-sm"
+                                        href='#{{pd}}'>View</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    </div>
+            </td>
+        </tr>
+    </table>
+
+</div>
+
+
+<!--Typing text box-->
+<div class="skype-chat-comment">
+<table>
+        <tr>
+            <td><input class="form-control txt-comment" [(ngModel)]="inputText" 
+            placeholder="Type your question here"/>            
+            </td>
+            <td>
+                <div>
+                    <button class="fa fa-paper-plane" (click)="addRow()"></button>
+                    
+                </div>
+            </td>
+        </tr>
+</table>            
+</div>
+
+</div>
+</div>

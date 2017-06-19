@@ -1,0 +1,76 @@
+section {
+width: 90% !important;
+height: 800px  !important;
+margin: auto !important;
+}
+
+.skype-container {
+width: 360px !important;
+box-shadow: 1px 0 3px rgba(0,0,0,.15) !important;
+padding: 0 !important;
+margin: 0 50px !important;
+position: relative !important;
+}
+
+
+.skype-chat-content {
+padding: 10px !important;
+background: #fff !important;
+height: 100% !important;
+margin: 10px !important;
+margin-top: 25px !important;
+overflow-y:auto !important;
+
+}
+
+.user-comment,.author-comment{
+    
+    padding:10px !important;
+    color:#000 !important;
+    border:1px solid #c1e8fa !important;
+    margin-bottom:20px !important;
+    display:inline-block !important;
+    line-height:22px !important;
+    width:200px !important;
+    border-radius:5px !important;
+}
+.user-comment{
+        background:#dbf2fa !important;
+}
+.author-comment{
+    background:#bfe9f9 !important;
+}
+.skype-video-coments {
+    display:none !important;
+    position:relative !important;
+}
+
+.skype-chat-comment {
+    position: absolute !important;
+    bottom: 0 !important;
+    width: 350px !important;
+    height: 56px !important;
+    border:1px solid #ccc !important;
+}
+
+
+.txt-comment {
+    width:300px !important;
+    height: 50px !important;
+}
+
+.form-control-option {
+        position: absolute !important;
+bottom: 0 !important;
+right: 10px !important;
+    }
+    
+.form-control-option span {
+            display: inline-block !important;
+font-size: 22px !important;
+width: 30px !important;
+line-height: 50px !important;
+height: 80px !important;
+padding-left: 5px !important;
+cursor:pointer;
+}

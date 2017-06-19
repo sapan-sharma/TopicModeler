@@ -1,0 +1,3166 @@
+﻿<!DOCTYPE html>
+<html dir="ltr" lang="en-US">
+  <head>
+    <base href="/">
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="styles.css">
+
+    <!-- Polyfill(s) for older browsers -->
+    <script src="node_modules/core-js/client/shim.min.js"></script>
+    <script src="node_modules/zone.js/dist/zone.js"></script>
+    <script src="node_modules/systemjs/dist/system.src.js"></script>
+
+    <script src="systemjs.config.js"></script>
+    <script>
+      System.import('main.js').catch(function(err){ console.error(err); });
+    </script>
+
+    <!-- Stylesheets
+============================================= -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+
+    <link href="http://fonts.googleapis.com/css?family=Lato:300,400,400italic,600,700|Raleway:300,400,500,600,700|Crete+Round:400italic" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="css/bootstrap.css" type="text/css" />
+    <link rel="stylesheet" href="css/style.css" type="text/css" />
+    <link rel="stylesheet" href="css/dark.css" type="text/css" />
+    <link rel="stylesheet" href="css/font-icons.css" type="text/css" />
+    <link rel="stylesheet" href="css/animate.css" type="text/css" />
+    <link rel="stylesheet" href="css/magnific-popup.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="css/jquery.fullPage.css" />
+    <link rel="stylesheet" href="css/responsive.css" type="text/css" />
+    <link rel="stylesheet" href="css/font-awesome.min.css" type="text/css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+      
+    <!--[if lt IE 9]>
+<script src="http://css3-mediaqueries-js.googlecode.com/svn/trunk/css3-mediaqueries.js"></script>
+<![endif]-->
+
+    <!-- External JavaScripts
+============================================= -->
+	<style>
+		.left-div
+	{
+	  display: inline-block;
+	  max-width: 75%;	  
+    top:1px;
+    position: fixed;
+	}
+	.right-div
+	{
+	  /*display: inline-block;*/
+	  max-width: 350px;	  
+	  background-color: light-blue;
+    position:fixed;
+    top:20px;
+    right: 42px;
+	}	
+	@media screen and (max-width: 100%) 
+	{
+	  .left-div, .right-div
+		{
+		   max-width: 100%;
+		}
+	}
+	</style>
+    <style>
+      .fixed-header #wrapper{
+        margin-top:140px;
+      }
+      #content .container{
+        padding-top:50px;
+      }
+      .audio-controls span {
+        display: inline-block;
+        margin-right: 10px;
+        cursor:pointer;
+      }
+
+      .audio-controls {
+        position: ABSOLUTE;
+        right: 135px;
+        top: 11px;
+        font-size: 21px;
+      }
+      .muteAudio{
+        color:red;
+      }
+        .audio-controls .play-btn, .audio-controls .mute-btn, .audio-controls .pause-btn, .audio-controls .search-btn {
+            display: none;
+        }
+        .sticky-header .audio-controls .mute-btn, .sticky-header .audio-controls .pause-btn, .sticky-header .audio-controls .search-btn {
+            display: inline-block;
+        }
+      .sticky-header .standard-logo img {
+        height: 55px !important;
+        top: -4px;
+        position: relative;
+      }
+
+        #searchResultsPopup {
+            background-color: #F1F1F1;
+            border: 1px #CCCCCC solid;
+            top: 47px;
+            overflow: hidden;
+            padding: 3px;
+            position: fixed;
+            right: 8px;
+            width: 275px;
+            z-index: 9999;
+            height: 85%;
+            font-size: 12px;
+            line-height: 20px;
+            right:-400px;
+        }
+        .searchresults-header {
+            /* background-color: #15a3c7; */
+            border: 1px #CCCCCC solid;
+            font-size: 12px;
+            font-weight: bold;
+            padding: 5px;
+            color: #FFF;
+        }
+            .searchresults-header > div {
+                display: inline-block;
+            }
+        .Search-input {
+            display: inline-block;
+            width: 185px;
+            height: 37px;
+            padding:2px 6px;           
+            font-size: 14px;
+            line-height: 1.42857143;
+            color: #555;
+            background-color: #fff;
+            background-image: none;
+            border: 1px solid #ccc;
+            border-top-left-radius: 4px;
+            border-top-right-radius: 4px;
+            -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+            box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+            -webkit-transition: border-color ease-in-out .15s,-webkit-box-shadow ease-in-out .15s;
+            -o-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+            transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+        }
+        .search-btn-get {
+            display: inline-block;
+            height: 34px;
+            border: 1px solid #ccc;
+            margin-left: 0px;
+            width: 33px;
+            text-align: center;
+            line-height: 36px;
+            position: relative;
+            cursor: pointer;
+            color: #333;
+        }
+        .searchpopupClose, .popup-minimize {
+            display: inline-block;
+            height: 34px;
+            border: 1px solid #ccc;
+            border-left: none;
+            margin-left: -3px;
+            width: 33px;
+            text-align: center;
+            line-height: 36px;
+            position: relative;
+            cursor: pointer;
+            color: #333;
+        }
+        #Searchresult {
+            overflow: auto;
+            height: 100%;
+            overflow: auto;
+            height: 90%;
+            color: black;
+            position: absolute;
+            left: 0px;
+            width: 100%;
+            font-size: 12px;
+            z-index: 2;
+            color: #000;
+            overflow: auto;
+            font-weight: bold;
+        }
+        ul.searchresults {
+            list-style-type: none;
+            padding-left: 0px;
+            margin-top: 14px;
+        }
+            ul.searchresults li {
+                margin: 0;
+            }
+
+        .resultlink {
+            color: #3E68E2;
+            cursor: pointer;
+            color: #333;
+            /* text-transform: capitalize; */
+            font: normal 12px/17px Arial, sans-serif;
+            border-bottom: 1px solid #ccc;
+            border-top: 1px solid #fff;
+            padding: 10px 0 10px 10px;
+            cursor: pointer;
+            display:block;
+        }
+        .sarechresult {
+            background-color: yellow;
+        }
+        .resultlink:hover {
+            background: #fff;
+            color: #000;
+        }
+        ul.noresults {
+            list-style-type: none;
+            margin-top: 12px;
+            text-align: center;
+            padding-left: 5px;
+        }
+        .noresultlink {
+            color: red;
+            font-size: 14px;
+        }
+        .highlighted {
+            background-color: #FFFF88;
+            color:#000;
+        }
+        #minimize-popup{
+            display:none;
+        }
+        .audio-pause {
+            background: url('images/pause.png');
+            width:12px;
+            height:16px;
+            display:inline-block;
+        }
+        .icon-reorder{
+            font-size:20px;
+        }
+		.audio-controls .play-btn{
+		  display:none !important;
+		}
+		.audio-controls .play-btn.show-playbtn{
+		  display:inline-block !important;
+		}
+		.sticky-header .audio-controls  .pause-btn{
+		  display:inline-block !important;
+		}
+		.audio-controls  .pause-btn.hide-pausebtn{
+		  display:none !important;
+		}
+        .sub-btn {
+            
+            display: inline-block;
+            font-family: Arial, "Helvetica", sans-serif;
+            font-size: 18px;
+            font-weight: bold;
+            color: #fff;
+            text-decoration: none;
+            text-transform: capitalize;
+            padding: 7px 28px;
+            text-align: center;
+            text-shadow: 1px 1px 0px #07526e;
+            margin-left: auto;
+            margin-right: auto;
+            left: 0;
+            position: relative;
+            cursor: pointer;
+            border: none;
+            background: #109bce;
+            background-image: linear-gradient(bottom, rgb(14,137,182) 0%, rgb(22,179,236) 100%);
+            border-radius: 5px;
+            box-shadow: inset 0px 1px 0px #2ab7ec, 0px 5px 0px 0px #07526e, 0px 10px 5px #0c0c0c;
+        }
+    </style>
+
+    <!-- Document Title
+============================================= -->
+    <title>Ergonomic Use of Personal Computing Devices</title>
+
+  </head>
+
+  <body >
+
+    <div id='top-div'>
+
+    <div class="right-div">
+	<app-root></app-root>
+	</div>
+    <!-- Document Wrapper
+============================================= -->
+    <div id="wrapper" class="stretched overlay-menu clearfix left-div" style="animation-duration: 1.5s; opacity: 1;">
+
+      <!-- Header
+============================================= -->
+      <header id="header" class="transparent-header dark">
+
+        <div id="header-wrap">
+
+          <div class="container clearfix paddingclass">
+
+            <div id="primary-menu-trigger"><i class="icon-reorder"></i></div>
+            <div class="audio-controls">
+              <span class="mute-btn"> <i class="fa fa-microphone" aria-hidden="true"></i></span>
+              <span class="pause-btn"><i class="audio-pause" aria-hidden="true"></i></span>
+              <span class="play-btn"><i class="fa fa-play-circle" aria-hidden="true"></i></span>
+                <span class="search-btn"><i class="fa fa-search" aria-hidden="true"></i></span>
+            </div>
+
+            <!-- Logo
+============================================= -->
+            <div id="logo">
+              <a href="index.html" class="standard-logo" data-dark-logo="images/logo-dark.png"><img src="images/logo-dark.png" alt=""></a>
+              <a href="index.html" class="retina-logo" data-dark-logo="images/logo-dark@2x.png"><img src="images/logo@2x.png" alt=""></a>
+            </div><!-- #logo end -->
+
+            <!-- Primary Navigation
+============================================= -->
+            <nav id="primary-menu">
+
+              <ul>
+                <li class="current" ><a href="#0" class="overlay-menu-close" ><div>Welcome</div></a></li>                
+                <li><a href="#Introduction" class="overlay-menu-close"><div>Introduction</div></a></li>
+                <li><a href="#2" class="overlay-menu-close"><div>Common Body Postures</div></a></li>
+                <li><a href="#3" class="overlay-menu-close"><div>Body Position</div></a></li>
+                <li><a href="#4" class="overlay-menu-close"><div>Keep Your Head Straight</div></a></li>
+                <li><a href="#5" class="overlay-menu-close"><div>Position of Your Neck </div></a></li>
+                <li><a href="#6" class="overlay-menu-close"><div>Check Your Eyes</div></a></li>
+                <li><a href="#7" class="overlay-menu-close"><div>Take Care of Your Eyes</div></a></li>
+                <li><a href="#8" class="overlay-menu-close"><div>Position of Your Shoulders </div></a></li>
+                <li><a href="#9" class="overlay-menu-close"><div>Place the Wrists Firmly</div></a></li>
+                <li><a href="#10" class="overlay-menu-close"><div>Position of the Feet</div></a></li>
+                <li><a href="#11" class="overlay-menu-close"><div>Sit Posture</div></a></li>
+                <li><a href="#12" class="overlay-menu-close"><div>Between Sitting and Standing</div></a></li>
+                <li><a href="#13" class="overlay-menu-close"><div>Avoid Ergonomic Injuries</div></a></li>
+                <li><a href="#14" class="overlay-menu-close"><div>Stretches</div></a></li>
+                <li><a href="#15" class="overlay-menu-close"><div>Exercise While You Work</div></a></li>
+                <li><a href="#16" class="overlay-menu-close"><div>Take Pauses and Breaks</div></a></li>
+                <li><a href="#17" class="overlay-menu-close"><div>Set Up Your Workstation</div></a></li>
+                <li><a href="#18" class="overlay-menu-close"><div>Position the Monitor </div></a></li>
+                <li><a href="#19" class="overlay-menu-close"><div>Place the Keyboard </div></a></li>
+                <li><a href="#20" class="overlay-menu-close"><div>Hold the Mouse </div></a></li>
+                <li><a href="#21" class="overlay-menu-close"><div>Use of Your Chair?</div></a></li>
+                <li><a href="#22" class="overlay-menu-close"><div>Maintain Correct Posture </div></a></li>
+                <li><a href="#23" class="overlay-menu-close"><div>Sufficient Lighting</div></a></li>
+                <li><a href="#24" class="overlay-menu-close"><div>Place Documents </div></a></li>
+                <li><a href="#25" class="overlay-menu-close"><div>Position and Use Telephone </div></a></li>
+                <li><a href="#26" class="overlay-menu-close"><div>Storage Areas </div></a></li>
+                <li><a href="#27" class="overlay-menu-close"><div>Laptops and Mobiles Devices</div></a></li>
+                <li><a href="#28" class="overlay-menu-close"><div>Handle Smartphones </div></a></li>
+                <li><a href="#29" class="overlay-menu-close"><div>Improve Ergonomics Smartly</div></a></li>
+                <li><a href="#30" class="overlay-menu-close"><div>Summary</div></a></li>               
+                <li><a href="#32" class="overlay-menu-close"><div>Quiz Question1</div></a></li>          
+                <li><a href="#34" class="overlay-menu-close"><div>Quiz Question2</div></a></li>
+                <li><a href="#35" class="overlay-menu-close"><div>Quiz Question3</div></a></li>
+                <li><a href="#36" class="overlay-menu-close"><div>Quiz Question4</div></a></li>
+              </ul>
+
+
+              <a href="#" id="overlay-menu-close" class="visible-lg-block visible-md-block dark"><i class="icon-line-cross"></i></a>
+
+            </nav><!-- #primary-menu end -->
+
+          </div>
+
+        </div>
+
+      </header><!-- #header end -->
+
+      <section id="slider" class="slider-parallax swiper_wrapper full-screen clearfix">
+
+        <div class="swiper-container swiper-parent">
+          <div class="swiper-wrapper">
+            <div class="swiper-slide dark" style="background-image: url('images/slider/swiper/intro.jpg');">
+              <div class="container clearfix">
+                <div class="slider-caption slider-caption-left" >
+                  <audio controls class="audioElement" style="opacity:0;">
+                    <source src="audio/slide1.mp3" type="audio/mpeg">
+                    <p>If you can read this, your browser does not support the audio element.</p>
+                  </audio>
+                  <h2 data-caption-animate="fadeInUp">Ergonomic Use of Personal Computing Devices</h2>
+
+                  <a data-caption-animate="bounceIn" data-caption-delay="800"  class="button button-rounded button-reveal button-large button-border tright" href="#Introduction" id="startbtn" onclick="addmargin()"><i class="icon-arrow-down"></i><span>Start Now!</span></a>
+                  <p>&nbsp;</p>
+                  <p>&nbsp;</p>
+                </div>
+              </div>
+            </div>
+
+
+          </div>
+
+        </div>
+
+
+
+      </section>
+
+      <!-- Content
+============================================= -->
+
+      <section id="content">
+
+        <div class="content-wrap nopadding">
+
+          <div class="fullpage">
+
+
+            <div id="Introduction" class="section parallax full-screen nomargin noborder" style="background-image: url('images/slider/swiper/1.jpg');" data-stellar-background-ratio="0.4">
+              <div class="vertical-middle vertical-middle-resize-1024">
+                <div class="container clearfix">
+
+                  <div class="col-lg-12 nobottommargin emphasis-title left nobottomborder bounceIn" data-animate="bounceInLeft" data-delay="400">
+                    <h2>Introduction</h2>
+                  </div>
+                  <audio controls class="audioElement" style="opacity:0;">
+                    <source src="audio/slide2.mp3" type="audio/mpeg">
+                    <p>If you can read this, your browser does not support the audio element.</p>
+                  </audio>
+
+                  <div class="col-lg-6 nobottommargin">
+
+                    <div class="emphasis-title emphasis-title-resize-1024" data-animate="bounceInLeft" data-delay="800">
+                      <p class="lead topmargin-sm" data-animate="bounceInLeft" data-delay="800">Ergonomics is setting, arranging, and using your computer workstation in such a way that it is comfortable, safe, and efficient to use. </p>
+                      <p class="lead topmargin-sm" data-animate="bounceInLeft" data-delay="1200">A good ergonomic design prevents repetitive strain, injuries, pain, and musculoskeletal disorders that may cause long-term disability and helps improve the productivity and performance of the users.</p>
+
+                      <p class="lead topmargin-sm" data-animate="bounceInLeft" data-delay="1600">
+                        This short course will help you in identifying the appropriate body posture while setting up and using the workstation, to prevent any damage caused to the body due to poor ergonomics. It will also help you to identify the proper usage of laptops and smartphones.
+                      </p>
+
+
+                    </div>
+
+                  </div>
+
+                  <div class="col-lg-6 nobottommargin">
+
+                    <div class="emphasis-title img-content img-content-resize-1024" data-animate="bounceInLeft" data-delay="400">
+
+                      <img src="images/1.jpg" alt="" data-animate="bounceIn" data-delay="1200" class="content-img intro-img-res img-resize-80" style="margin-top:-50px;"/>
+
+
+
+                    </div>
+
+
+
+
+                  </div>
+
+
+                </div>
+              </div>
+            </div>
+
+
+
+            <div id="2" class="section parallax full-screen nomargin noborder" style="background-image: url('images/slider/swiper/2.jpg');" data-stellar-background-ratio="0.4">
+              <div class="vertical-middle vertical-middle-resize3-1024">
+                <div class="container clearfix">
+                  <audio controls class="audioElement" style="opacity:0;">
+                    <source src="audio/slide3.mp3" type="audio/mpeg">
+                    <p>If you can read this, your browser does not support the audio element.</p>
+                  </audio>
+
+                  <div class="col-lg-12 nobottommargin emphasis-title left nobottomborder bounceIn" data-animate="bounceInLeft" data-delay="100">
+                    <h2>Keep Your Body Position Right</h2>
+                  </div>
+
+                  <div class="col-lg-6 nobottommargin">
+
+
+                    <div class="emphasis-title emphasis-title-resize3-1024" data-animate="bounceInLeft" data-delay="800">
+
+                      <p class="lead topmargin-sm" data-animate="bounceInLeft" data-delay="800">While working for long hours on your workstation, you must have experienced several strains and pains throughout your body. This is the toll that desk work takes on your body. </p>
+                      <p class="lead topmargin-sm" data-animate="bounceInLeft" data-delay="1200">Ignore ergonomics and you risk suffering from numbness, pain, eye strain, eye irritation, back injury, soft tissue injury, nerve compression syndrome, and many more body problems that may result in chronic health problems. </p>
+
+                      <p class="lead topmargin-sm" data-animate="bounceInLeft" data-delay="1600">A bad posture or a poor setup effects the human body adversely, especially eyes, neck, shoulders, back, wrists, and feet. You need to position your body right to avoid any body-related problems.</p>
+
+
+                    </div>
+
+                  </div>
+
+                  <div class="col-lg-6 nobottommargin">
+
+                    <div class="emphasis-title img-center-1024" data-animate="bounceInLeft" data-delay="400">
+                      <img src="images/2.jpg" alt="" data-animate="bounceIn" data-delay="1200" class="content-img res-margin-left-20 img-resize-80 img-resize3-80" style="width:430px;"/>
+
+
+
+                    </div>
+
+                  </div>
+
+                </div>
+              </div>
+            </div>
+
+
+
+            <div id="3" class="section parallax full-screen nomargin noborder" style="background-image: url('images/slider/swiper/3.jpg');" data-stellar-background-ratio="0.4">
+              <div class="vertical-middle vertical-middle-resize3-1024 pagespadding">
+                <div class="container clearfix">
+
+
+                  <div class="col-lg-12 nobottommargin emphasis-title left nobottomborder bounceIn" data-animate="bounceInLeft" data-delay="400">
+                    <h2>Keep Your Head Straight</h2>
+                  </div>
+
+                  <div class="col-lg-7 nobottommargin margin-25-top">
+
+                    <audio controls class="audioElement" style="opacity:0;">
+                      <source src="audio/slide4.mp3" type="audio/mpeg">
+                      <p>If you can read this, your browser does not support the audio element.</p>
+                    </audio>
+
+                    <div class="emphasis-title emphasis-title-resize3-1024 emphasis-title-resize-1024" data-animate="bounceInLeft" data-delay="800">
+
+                      <p class="lead topmargin-sm" data-animate="bounceInLeft" data-delay="800">
+                        Do you know that bending the head forward at a 60 degree angle to look down puts 60 pounds of pressure on the neck? Accumulated, this leads to stress on the spine, early wear and tear and potential for an increased risk of acute injury.
+                      </p>
+                      <p class="lead topmargin-sm" data-animate="bounceInLeft" data-delay="1200">
+                        This is how you should keep your head:
+                      </p>
+
+                      <ul class="lead topmargin-sm" style="margin-left:50px;" data-animate="bounceIn" data-delay="1800">
+                        <li>The head should be kept straight in such a way that the top of the monitor is at the eye level. </li>
+                        <li>If required, adjust your chair’s height. Your eyes should be looking down at your work, and not up.  </li>
+                        <li>Also, don’t hold your head in one position for long. </li>
+                      </ul>
+
+
+                    </div>
+
+                  </div>
+
+                  <div class="col-lg-5 nobottommargin">
+
+                    <div class="emphasis-title img-center-1024" data-animate="bounceInLeft" data-delay="400">
+                      <img src="images/3.jpg" alt="" data-animate="bounceIn" data-delay="1200" class="content-img res-margin-left-20 img-resize-80" style="width:430px;"/>
+
+
+
+                    </div>
+
+
+                  </div>
+
+                </div>
+              </div>
+            </div>
+
+            <div id="4" class="section parallax full-screen nomargin noborder" style="background-image: url('images/slider/swiper/4.jpg'); " data-stellar-background-ratio="0.4">
+              <div class="vertical-middle vertical-middle-resize3-1024 pagespadding">
+                <div class="container clearfix paddingcss">
+                    <div class="col-lg-7 nobottommargin emphasis-title left nobottomborder bounceIn" data-animate="bounceInLeft" data-delay="400">
+                        <h2>Position Your Neck Correctly</h2>
+                    <audio controls class="audioElement" style="opacity:0;" autoplay>
+                         
+                      <source src="audio/slide5.mp3" type="audio/mpeg">
+                      <p>If you can read this, your browser does not support the audio element.</p>
+                    </audio>
+
+                    <p class="lead nomargin" data-animate="bounceInLeft" data-delay="800"  >
+                      Your neck bears the pressure of your head. <br><br>This is how you should position your neck:
+                    </p>
+                        
+                            <div class="emphasis-title hidden-lg hidden-md" data-animate="bounceInLeft" data-delay="400">
+                      <ul class="lead topmargin-sm" style="margin-left:50px;" data-animate="bounceIn" data-delay="1200">
+                        
+						
+                        <li data-animate="bounceInLeft" data-delay="1800">The neck should be in the neutral and relaxed position and should not be arched back. </li>
+						
+                        <li data-animate="bounceInLeft" data-delay="2200">The chin should not extend forward and an upright spinal posture should be maintained.</li>
+						
+                        <li data-animate="bounceInLeft" data-delay="2600"> If required, look down with your eyes, rather than your neck.</li>
+						
+                        <li data-animate="bounceInLeft" data-delay="3000">Avoid looking down and holding devices in lap or below chest height as this bends the neck and causes pain. </li>
+						
+                    	
+                        <li data-animate="bounceInLeft" data-delay="4200"> Avoid eye strain that causes neck pain. </li>
+						
+                        <li data-animate="bounceInLeft" data-delay="4600">Avoid positioning neck on one side or rotating it while talking on the phone or while texting for long duration.</li>
+						
+                      </ul>
+                         </div>
+                                  
+                  </div>
+                    <div class="col-lg-12 nobottommargin nopadding hidden-md hidden-lg">
+                  <div class="emphasis-title img-center-1024" data-animate="bounceInLeft" data-delay="400">
+                      <img src="images/36-2.jpg" alt="" data-animate="bounceIn" data-delay="1200" class="content-img res-margin-left-20 img-resize-80" style="width: 600px;"/>
+                      
+                  </div>
+                  </div>
+                    
+                    
+                    
+                  <div class="col-lg-5 nobottommargin nopadding hidden-xs hidden-sm" style="margin-left:-15px;margin-right:-15px;">
+                    <div class="emphasis-title img-center-1024 margin-25-top-page5 hidden-xs hidden-sm" data-animate="bounceInLeft" data-delay="400">
+                      <img src="images/4.png" alt="" data-animate="bounceIn" data-delay="1200" class="neck-img-res img-resize-80"  />
+                        </div>
+                      
+                  
+                  </div>
+
+
+
+                
+              </div>
+            </div>
+
+              </div>
+
+
+
+
+
+
+            <div id="5" class="section parallax full-screen nomargin noborder" style="background-image: url('images/slider/swiper/5.jpg');" data-stellar-background-ratio="0.4">
+              <div class="vertical-middle pagespadding vertical-middle-resize3-1024">
+                <div class="container clearfix">
+
+
+                  <div class="col-lg-12 nobottommargin emphasis-title left nobottomborder bounceIn" data-animate="bounceInLeft" data-delay="400">
+                    <h2>Check Your Eyes</h2>
+                  </div>
+
+                  <div class="col-lg-6 nobottommargin">
+                    <audio controls class="audioElement" style="opacity:0;">
+                      <source src="audio/slide6.mp3" type="audio/mpeg">
+                      <p>If you can read this, your browser does not support the audio element.</p>
+                    </audio>
+                    <div class="emphasis-title emphasis-title-resize-1024 margin-25-top" data-animate="bounceInLeft" data-delay="800">
+
+                      <p class="lead topmargin-sm" data-animate="bounceInLeft" data-delay="800">Have your ever felt your eyes burning, neck aching, vision blurring, or head throbbing?  </p>
+                      <p class="lead topmargin-sm" data-animate="bounceInLeft" data-delay="1200">This problem is called eyestrain or Computer Vision Syndrome, in medical terms. Do you know why it happens? </p>
+
+                      <ul class="lead topmargin-sm" style="margin-left:50px;" data-animate="bounceIn" data-delay="1800">
+                        <li data-animate="bounceInLeft" data-delay="2000">Continuously staring at the monitor for long</li>
+                        <li data-animate="bounceInLeft" data-delay="2400">Due to monitor's bright backlight</li>
+                        <li data-animate="bounceInLeft" data-delay="2800">Due to the glare of the monitor</li>
+                        <li data-animate="bounceInLeft" data-delay="3200">Sitting too close to the computer</li>
+                        <li data-animate="bounceInLeft" data-delay="3600">Sitting far away from the computer</li>
+                      </ul>
+
+
+                    </div>
+
+                  </div>
+
+                  <div class="col-lg-6 nobottommargin">
+
+                    <div class="emphasis-title img-center-1024 emphasis-title-resize-1024" data-animate="bounceInLeft" data-delay="400">
+                      <img src="images/5.jpg" alt="" data-animate="bounceIn" data-delay="1200" class="content-img res-margin-left-20 img-resize-80" />
+
+
+
+                    </div>
+
+
+                  </div>
+
+                </div>
+              </div>
+            </div>
+
+
+            <div id="6" class="section parallax full-screen nomargin noborder" style="background-image: url('images/slider/swiper/6.jpg');" data-stellar-background-ratio="0.4">
+
+              <div class="vertical-middle pagespadding vertical-middle-resize3-1024">
+                <div class="container clearfix" style="margin-top:-25px;">
+                  <audio controls class="audioElement" style="opacity:0;">
+                    <source src="audio/slide7.mp3" type="audio/mpeg">
+                    <p>If you can read this, your browser does not support the audio element.</p>
+                  </audio>
+
+                  <div class="col-lg-12 nobottommargin emphasis-title left nobottomborder bounceIn" data-animate="bounceInLeft" data-delay="400">
+                    <h2>Take Care of Your Eyes</h2>
+                  </div>
+
+                  <div class="col-lg-6 nobottommargin">
+
+                    <div class="emphasis-title" data-animate="bounceInLeft" data-delay="800">
+
+                      <p class="lead topmargin-sm headhi" data-animate="bounceInLeft" data-delay="800">You can take care of your eyes and reduce eye strain by:</p>
+
+                      <ul class="lead topmargin-sm" style="margin-left:50px;" data-animate="bounceIn" data-delay="1200">
+                        <li data-animate="bounceInLeft" data-delay="1200">Keeping your monitor 20-30 inches away from the eyes. </li>
+						
+                        <li data-animate="bounceInLeft" data-delay="1800">Keeping the top of the monitor at eye level.</li>
+						
+                        <li data-animate="bounceInLeft" data-delay="2200">Using good lighting and avoiding too much artificial or natural light.</li>
+						
+                        <li data-animate="bounceInLeft" data-delay="2600">Turning off any harsh fluorescent lights.</li>
+						
+                        <li data-animate="bounceInLeft" data-delay="3000">Using appropriate font size, neither too big nor too small.</li>
+						
+                        <li data-animate="bounceInLeft" data-delay="3400">Arranging multiple computers properly (stack vertically or arrange in an arc).</li>
+						
+                        <li data-animate="bounceInLeft" data-delay="3800">Using appropriate eyewear.</li>
+						
+                        <li data-animate="bounceInLeft" data-delay="4200">Positioning the monitor to avoid glare, shadows, or reflections on the screen.</li>
+						
+                        <li data-animate="bounceInLeft" data-delay="4600">Using anti-reflection coatings on spectacle lenses to reduce reflections.</li>
+						
+                        <li data-animate="bounceInLeft" data-delay="5000">Having visual variation throughout your day by changing postures.</li>
+						
+                        <li data-animate="bounceInLeft" data-delay="5400">Looking 20 feet away for 20 seconds every 20 minutes.</li>
+                      </ul>
+                      <!--
+<audio controls class="audioElement" style="opacity:0;">
+<source src="audio/slide7_1.mp3" type="audio/mpeg">
+<p>If you can read this, your browser does not support the audio element.</p>
+</audio>
+-->
+                    </div>
+
+                  </div>
+
+                  <div class="col-lg-6 nobottommargin">
+
+                    <div class="emphasis-title img-center-1024 emphasis-title-resize-1024" data-animate="bounceInLeft" data-delay="400">
+                  
+                      <img src="images/6.jpg" alt="" data-animate="bounceIn" data-delay="1200" class="content-img res-margin-left-20 img-resize-80" />
+
+
+
+                    </div>
+
+
+                  </div>
+
+                </div>
+              </div>
+            </div>
+
+
+
+            <div id="7" class="section parallax full-screen nomargin noborder" style="background-image: url('images/slider/swiper/7.jpg');" data-stellar-background-ratio="0.4">
+              <div class="vertical-middle vertical-middle-resize3-1024">
+                <div class="container clearfix">
+
+                  <audio controls class="audioElement" style="opacity:0;">
+                    <source src="audio/slide8.mp3" type="audio/mpeg">
+                    <p>If you can read this, your browser does not support the audio element.</p>
+                  </audio>
+                  <div class="col-lg-12 nobottommargin emphasis-title left nobottomborder bounceIn" data-animate="bounceInLeft" data-delay="400">
+                    <h2>Position Your Shoulders Correctly</h2>
+                  </div>
+
+                  <div class="col-lg-12 nobottommargin">
+
+                    <div class="emphasis-title" data-animate="bounceInLeft" data-delay="800">
+
+                      <p class="lead topmargin-sm" data-animate="bounceInLeft" data-delay="800">
+                        An inappropriate body posture can cause excessive stress and discomfort or pain in the shoulders and back.
+                      </p>
+                      </div></div>
+                      <div class="col-lg-6 nobottommargin">
+                    <div class="emphasis-title img-center-1024 emphasis-title-resize-1024" data-animate="bounceIn" data-delay="1200">
+                        <img src="images/7.jpg" alt="" data-animate="bounceIn" data-delay="1600" class="center content-img img-res-auto img-resize-80" style="width:90%"/>
+
+                      </div>
+                    </div>
+                    <div class="col-lg-6 nobottommargin emphasis-title-resize-1024">
+                    
+                      <p class="lead topmargin-sm" data-animate="bounceInLeft" data-delay="2000">
+                        To avoid this, keep your shoulders relaxed by:
+                      </p>
+
+                      <ul class="lead topmargin-sm" style="margin-left:50px;" data-animate="bounceIn" data-delay="1800">
+                        <li data-animate="bounceInLeft" data-delay="2400">Adjusting the armrests. If the armrests are causing hindrance, remove them.</li>
+						
+                        <li data-animate="bounceInLeft" data-delay="2800">Adjusting the keyboard height</li>
+						
+                        <li data-animate="bounceInLeft" data-delay="3200">Not holding the phone up to your ear and not texting for long periods of time</li>
+						
+                        <li data-animate="bounceInLeft" data-delay="3600">
+                          Avoiding looking down by bending the neck as it tends to round the shoulders.
+                        </li>
+                      </ul>
+                    </div>
+
+                 
+
+
+                </div>
+              </div>
+            </div>
+
+
+
+            <div id="8" class="section parallax full-screen nomargin noborder" style="background-image: url('images/slider/swiper/8.jpg');" data-stellar-background-ratio="0.4">
+              <div class="vertical-middle vertical-middle-resize3-1024">
+                <div class="container clearfix">
+
+
+                  <div class="col-lg-12 nobottommargin emphasis-title left nobottomborder bounceIn" data-animate="bounceInLeft" data-delay="400">
+                    <h2>Place the Wrists Firmly</h2>
+                  </div>
+
+                  <div class="col-lg-12 nobottommargin">
+
+                    <div class="emphasis-title emphasis-title-resize-1024" data-animate="bounceInLeft" data-delay="800">
+                      <audio controls class="audioElement" style="opacity:0;">
+                        <source src="audio/slide9.mp3" type="audio/mpeg">
+                        <p>If you can read this, your browser does not support the audio element.</p>
+                      </audio>
+                      <div class="col-lg-12 nobottommargin">
+                        <p class="lead topmargin-sm" data-animate="bounceInLeft" data-delay="800">Wrists are affected most while working on a keyboard or a mouse. Weak wrists and leg pain are all side effects of a poorly arranged workstation, so arrange your workstation such that it keeps your wrists relaxed and as straight as possible.</p>
+                      </div>
+
+
+                      <div class="col-lg-6 nobottommargin">
+
+                        <div class="emphasis-title" data-animate="bounceInLeft" data-delay="800">
+
+                          <p class="lead topmargin-sm" data-animate="bounceInLeft" data-delay="800">Adjust the keyboard height so that the elbows are in a slightly open position (100° to 110°), and the wrists and hands are straight. </p>
+                          <p class="lead topmargin-sm" data-animate="bounceInLeft" data-delay="1200">Minimize the strain on your wrists, fingers and thumbs by using a neutral grip when holding your device. A neutral grip is achieved when the wrist is relatively straight and not bent in any direction. </p>
+
+                          <p class="lead topmargin-sm" data-animate="bounceInLeft" data-delay="1600">If you keep your wrists bent whilst using a mobile device, your fingers and/or thumbs have to work a lot harder than with a neutral grip.</p>
+
+
+                        </div>
+
+                      </div>
+
+
+                      <div class="col-lg-6 nobottommargin">
+
+                        <div class="emphasis-title img-center-1024 emphasis-title-resize-1024" data-animate="bounceInLeft" data-delay="400">
+                          <img src="images/8.jpg" alt="" data-animate="bounceIn" data-delay="1200" class="content-img img-resize-80" />
+
+
+
+                        </div>
+
+
+                      </div>
+
+
+
+                    </div>
+
+                  </div>
+
+
+
+                </div>
+              </div>
+            </div>
+
+
+            <div id="9" class="section parallax full-screen nomargin noborder" style="background-image: url('images/slider/swiper/9.jpg');" data-stellar-background-ratio="0.4">
+              <div class="vertical-middle vertical-middle-resize3-1024">
+                <div class="container clearfix">
+
+                  <audio controls class="audioElement" style="opacity:0;">
+                    <source src="audio/slide10.mp3" type="audio/mpeg">
+                    <p>If you can read this, your browser does not support the audio element.</p>
+                  </audio>
+                  <div class="col-lg-12 nobottommargin emphasis-title left nobottomborder bounceIn" data-animate="bounceInLeft" data-delay="400">
+                    <h2>Position the Feet Appropriately </h2>
+                  </div>
+
+                  <div class="col-lg-12 nobottommargin">
+
+                    <div class="emphasis-title" data-animate="bounceInLeft" data-delay="750">
+
+                      <div class="col-lg-6 nobottommargin">
+
+                        <div class="emphasis-title" data-animate="bounceInLeft" data-delay="800">
+
+                          <p class="lead topmargin-sm line-height-1024" data-animate="bounceInLeft" data-delay="800">While sitting, your feet should be on the floor in front of you, and your thighs should be slightly below your hips. </p>
+                          <p class="lead topmargin-sm line-height-1024" data-animate="bounceInLeft" data-delay="1200">If your feet are tucking behind you or you are sitting on one leg, or in another awkward position then you need to adjust your chair. </p>
+
+                          <p class="lead topmargin-sm line-height-1024" data-animate="bounceInLeft" data-delay="1600">Raise or lower your chair so that your feet are flat on the floor and slightly forward from the knees. Your knees should be equal to or slightly lower than your hips. </p>
+
+                          <p class="lead topmargin-sm line-height-1024" data-animate="bounceInLeft" data-delay="1600">
+                            You may require to adjust the height of your chair or use a seat cushion to get in this position.
+                          </p>
+
+                          <p class="lead topmargin-sm line-height-1024" data-animate="bounceInLeft" data-delay="1600">If your feet are dangling, use a foot rest. In case you don’t have a foot rest, use a box or any other strong base of an adequate height below your feet.  </p>
+                          
+                          
+
+                        </div>
+
+                      </div>
+
+
+                      <div class="col-lg-6 nobottommargin">
+
+                        <div class="emphasis-title img-center-1024" data-animate="bounceInLeft" data-delay="400">
+                          <p>&nbsp;</p>
+                          <img src="images/9.jpg" alt="" data-animate="bounceIn" data-delay="1200" class="content-img res-margin-left-20 img-resize-75 img-resize3-80 emphasis-title-resize4-1024" style="margin-top:-25px;"/>
+
+
+
+                        </div>
+
+
+                      </div>
+
+
+
+                    </div>
+
+                  </div>
+
+
+
+                </div>
+              </div>
+            </div>
+
+
+
+            <div id="10" class="section parallax full-screen nomargin noborder" style="background-image: url('images/slider/swiper/10.jpg');" data-stellar-background-ratio="0.4">
+              <div class="vertical-middle vertical-middle-resize4-1024">
+                <div class="container clearfix">
+                  <audio controls class="audioElement" style="opacity:0;">
+                    <source src="audio/slide11.mp3" type="audio/mpeg">
+                    <p>If you can read this, your browser does not support the audio element.</p>
+                  </audio>
+
+                  <div class="col-lg-12 nobottommargin emphasis-title left nobottomborder bounceIn" data-animate="bounceInLeft" data-delay="400">
+                    <h2>Sit in the Right Posture</h2>
+                  </div>
+
+                  <div class="col-lg-12 nobottommargin">
+
+                    <div class="emphasis-title" data-animate="bounceInLeft" data-delay="800">
+
+                      <div class="col-lg-12 nobottommargin">
+                          <p class="lead topmargin-sm  nobottommargin" data-animate="bounceInLeft" data-delay="800">While working on your computer, you should have a neutral and relaxed sitting posture. Identify from the list below the features of an acceptable and well-supported posture:</p>
+                      </div>
+
+
+                      <div class="col-lg-6 nobottommargin">
+
+                        <div class="emphasis-title" data-animate="bounceInLeft" data-delay="800">
+
+                          <ul class="lead topmargin-sm" style="margin-left:50px;" data-animate="bounceIn" data-delay="1800">
+                            <li data-animate="bounceInLeft" data-delay="2400">Sitting with body close to desk</li>
+							
+                            <li data-animate="bounceInLeft" data-delay="2800">Head and neck facing forward and in the middle </li>
+							
+                            <li data-animate="bounceInLeft" data-delay="3200">Arching of the neck or forward extension of the chin </li>
+							
+                            <li data-animate="bounceInLeft" data-delay="3600">Shoulders relaxed and symmetrical</li>
+							
+                            <li data-animate="bounceInLeft" data-delay="4000">Elbows slightly closer to the sides of body and in a slightly open position (100° to 110°)</li>
+							
+                            <li data-animate="bounceInLeft" data-delay="4400">Wrists and hands straight</li>
+							
+                            <li data-animate="bounceInLeft" data-delay="4800">Back supported by the chair backrest</li>
+							
+                            <li data-animate="bounceInLeft" data-delay="4803">Curved lower part of the backrest fitting into the lower back or the lumbar curve</li>
+							
+                            <li data-animate="bounceInLeft" data-delay="4804">Hips making an open angle of 100-120 degrees (slightly more than a right angle)</li>
+							
+                            <li data-animate="bounceInLeft" data-delay="4805">Maintaining a small gap of 2-3 fingers between the front of the chair and the back of the knees</li>
+							
+                            <li data-animate="bounceInLeft" data-delay="4806">Feet lying flat on the floor or on the footrest
+</li>
+
+                          </ul>
+                        </div>
+
+                      </div>
+
+
+                      <div class="col-lg-6 nobottommargin">
+
+                        <div class="emphasis-title img-center-1024" data-animate="bounceInLeft" data-delay="400">
+                          <img src="images/1.jpg" alt="" data-animate="bounceIn" data-delay="1200" class="content-img res-margin-left-20 emphasis-title-resize5-1024 img-resize-80 img-resize5-80" style="margin-top:-10px;width:400px;"/>
+
+
+
+                        </div>
+
+
+                      </div>
+
+
+
+                    </div>
+
+                  </div>
+
+
+
+                </div>
+              </div>
+            </div>
+
+          
+
+            <div id="11" class="section parallax full-screen nomargin noborder" style="background-image: url('images/slider/swiper/11.jpg');" data-stellar-background-ratio="0.4">
+              <div class="vertical-middle vertical-middle-resize3-1024">
+                <div class="container clearfix">
+
+                  <audio controls class="audioElement" style="opacity:0;">
+                    <source src="audio/slide13.mp3" type="audio/mpeg">
+                    <p>If you can read this, your browser does not support the audio element.</p>
+                  </audio>
+                  <div class="col-lg-12 nobottommargin emphasis-title left nobottomborder bounceIn" data-animate="bounceInLeft" data-delay="400">
+                    <h2 style="margin-top:-20px;margin-bottom:10px;">Alternate Between Sitting and Standing</h2>
+                  </div>
+                  <div class="col-lg-5 nobottommargin">
+                    <div class="emphasis-title center" data-animate="bounceIn" data-delay="1200">
+                      <img src="images/11.jpg" alt="" data-animate="bounceIn" data-delay="1600" class="center content-img img-height-460 img-resize-80 img-11-height-1024"  />
+
+                    </div>
+                  </div>
+                  <div class="col-lg-7 nobottommargin emphasis-title-resize-1024">
+
+                    <div class="emphasis-title" data-animate="bounceInLeft" data-delay="800">
+
+                      <p class="lead topmargin-sm" data-animate="bounceInLeft" data-delay="800">Involve in some physical activity to avoid the adverse effects of prolonged sitting, such as slow metabolism, low life expectancy, sprains, strains, fatigue, etc.</p>
+                      <p class="lead topmargin-sm" data-animate="bounceInLeft" data-delay="800">Sitting for long puts pressure on nerves and tissues, causing numb buttocks and pain in legs and feet. Get up and walk when you feel numbness or pain in your body.</p>
+
+                      <p class="lead topmargin-sm" data-animate="bounceInLeft" data-delay="2000">After each hour of work, take a break or do some activity that uses different muscles of your body for at least 5-10 minutes.</p>
+                      <p class="lead topmargin-sm" data-animate="bounceInLeft" data-delay="2000">
+                        Use a a sit-stand work station or go for a brisk walk around the office.
+                      </p>
+                      <p class="lead topmargin-sm" data-animate="bounceInLeft" data-delay="2000">
+                        Try to get away from your computer during lunch breaks.
+                      </p>
+
+
+
+
+                    </div>
+
+                  </div>
+
+
+
+
+
+                </div>
+
+              </div>
+            </div>
+
+
+
+            <div id="12" class="section parallax full-screen nomargin center noborder" style="background-image: url('images/slider/swiper/12.jpg');" data-stellar-background-ratio="0.4">
+              <div class="vertical-middle vertical-middle-resize3-1024">
+                <div class="container clearfix">
+
+                  <audio controls class="audioElement" style="opacity:0;">
+                    <source src="audio/slide14.mp3" type="audio/mpeg">
+                    <p>If you can read this, your browser does not support the audio element.</p>
+                  </audio>
+                  <div class="col-lg-12 nobottommargin emphasis-title left nobottomborder bounceIn" data-animate="bounceInLeft" data-delay="400">
+                    <h2 class="text-left">Avoid Ergonomic Injuries</h2>
+                  </div>
+
+                  <div class="col-lg-12 nobottommargin">
+
+                    <div class="emphasis-title" data-animate="bounceInLeft" data-delay="800">
+
+                      <p class="lead topmargin-sm text-left" data-animate="bounceInLeft" data-delay="800">Ergonomic injuries affect muscles, nerves, tendons, joints, ligaments, spinal discs and cartilage in the neck, back, and lower and upper limbs. </p>
+                      <p class="lead topmargin-sm text-left hidden-md hidden-lg" data-animate="bounceInLeft" data-delay="800">Symptoms</p>
+                        
+                        <div class="emphasis-title hidden-lg hidden-md" data-animate="bounceInLeft" data-delay="400">
+                      <ul class="lead topmargin-sm text-left" style="margin-left:50px;" data-animate="bounceIn" data-delay="1200">
+                        
+						
+                        <li data-animate="bounceInLeft" data-delay="1800">Pain in the fingers, wrists, or other parts of body. You may experience a dull aching pain,  a sharp stabbing pain, or a burning sensation.</li>
+						
+                        <li data-animate="bounceInLeft" data-delay="2200">Tingling or numbness, particularly in hands or fingers.</li>
+						
+                        <li data-animate="bounceInLeft" data-delay="2600">Swelling, inflammation, or joint stiffness.</li>
+						
+                        <li data-animate="bounceInLeft" data-delay="3000">Loss of muscle function or weakness.</li>
+						
+                        <li data-animate="bounceInLeft" data-delay="4200">Discomfort or pain in the shoulders, neck, or upper or lower back.</li>
+						
+                        <li data-animate="bounceInLeft" data-delay="4600">Clumsiness or loss of coordination.</li>
+                          
+                            <li data-animate="bounceInLeft" data-delay="4600">Eye strain.</li>
+						
+                      </ul>
+                         </div>
+                        
+                      <div class="emphasis-title center" data-animate="bounceIn" data-delay="1200">
+                        <img src="images/12-1.png" alt="" data-animate="bounceIn" data-delay="1600" class="center img-res-auto img-res-auto-70 hidden-xs hidden-sm" style="width:55%;margin-top:-15px;" />
+
+                        <img src="images/12.jpg" alt="" data-animate="bounceIn" data-delay="1600" class="center content-img img-res-auto img-resize-60" style="width:30%" />
+
+                      </div>
+
+
+                    </div>
+
+                  </div>
+
+
+
+                </div>
+              </div>
+            </div>
+
+
+
+
+              <div id="13" class="section parallax full-screen nomargin noborder" style="background-image: url('images/slider/swiper/13.jpg');" data-stellar-background-ratio="0.4">
+                  <div class="vertical-middle pagespadding vertical-middle-resize3-1024">
+                      <div class="container clearfix">
+
+                          <audio controls class="audioElement" style="opacity:0;">
+                              <source src="audio/slide15.mp3" type="audio/mpeg">
+                              <p>If you can read this, your browser does not support the audio element.</p>
+                          </audio>
+                          <div class="col-lg-12 nobottommargin emphasis-title center nobottomborder bounceIn" data-animate="bounceInLeft" data-delay="400">
+                              <h2 class="text-left">Do Some Stretches</h2>
+                          </div>
+
+                          <div class="col-lg-12 nobottommargin res-padding-l-r-0">
+
+                              <div class="emphasis-title" data-animate="bounceInLeft" data-delay="800">
+
+                                  <p class="lead topmargin-sm" data-animate="bounceInLeft" data-delay="800">Click each image to learn about the stretches.</p>
+
+                                  <div class="emphasis-title center modal-popup-content row text-center" data-animate="bounceIn" data-delay="1200">
+									<div class="col-md-1"></div>
+									<div class="col-xs-6 col-md-2 col-sm-4 center"><img src="images/14-1.jpg" alt="" data-animate="bounceIn" data-delay="1600" class=" content-img-streches-content"  data-toggle="modal" data-target="#myModal1" /></div>
+                                    <div class="col-xs-6 col-md-2 col-sm-4 center"><img src="images/14-2.jpg" alt="" data-animate="bounceIn" data-delay="2000" class="content-img-streches-content"  data-toggle="modal" data-target="#myModal2" /> </div>                                   
+                                    <div class="col-xs-6 col-md-2 col-sm-4 center">  <img src="images/14-3.jpg" alt="" data-animate="bounceIn" data-delay="2400" class=" content-img-streches-content"  data-toggle="modal" data-target="#myModal3" /></div>
+                                    <div class="col-xs-6 col-md-2 col-sm-4 center">  <img src="images/14-4.jpg" alt="" data-animate="bounceIn" data-delay="2800" class=" content-img-streches-content"  data-toggle="modal" data-target="#myModal4" /></div>
+                                    <div class="col-xs-6 col-md-2 col-sm-4 center">  <img src="images/14-5.jpg" alt="" data-animate="bounceIn" data-delay="3200" class=" content-img-streches-content"  data-toggle="modal" data-target="#myModal5" /></div>
+
+                                  </div>
+
+                              </div>
+
+                          </div>
+
+
+
+                      </div>
+                  </div>
+              </div>
+
+
+            <div id="14" class="section parallax full-screen nomargin noborder" style="background-image: url('images/slider/swiper/14.jpg');" data-stellar-background-ratio="0.4">
+              <div class="vertical-middle vertical-middle-resize3-1024">
+                <div class="container clearfix">
+
+                  <audio controls class="audioElement" style="opacity:0;">
+                    <source src="audio/slide16.mp3" type="audio/mpeg">
+                    <p>If you can read this, your browser does not support the audio element.</p>
+                  </audio>
+                  <div class="col-lg-12 nobottommargin emphasis-title center nobottomborder bounceIn" data-animate="bounceInLeft" data-delay="400">
+                    <h2 class="text-left">Exercise While You Work</h2>
+                  </div>
+
+                  <div class="col-lg-12 nobottommargin hidden-xs hidden-sm">
+
+                    <div class="emphasis-title" data-animate="bounceInLeft" data-delay="800">
+
+
+                      <div class="emphasis-title center" data-animate="bounceIn" data-delay="1200">
+
+                        <img src="images/15.png" alt="" data-animate="bounceIn" data-delay="1600" class="center" style="width:98%; margin-top:30px;" />
+
+
+
+                      </div>
+
+
+                    </div>
+
+                  </div>
+                    
+                    <!--for xs and sm smart art-->
+                    
+                     <div class="col-xs-12 nobottommargin hidden-md hidden-lg">
+
+                    <div class="emphasis-title" data-animate="bounceInLeft" data-delay="800">
+
+
+                      <div class="emphasis-title center" data-animate="bounceIn" data-delay="1200">
+
+                        <img src="images/15-1.jpg" alt="" data-animate="bounceIn" data-delay="1600" class="center content-img-streches-content img-res-auto-70" style="margin-top:30px;" />
+                          
+                          <p class="lead topmargin-sm text-left " data-animate="bounceInLeft" data-delay="800" style="border:rgba(0,114,197,1.0) 5px solid;padding:5px;">Whatever equipment you choose, it should be safe, comfortable and provide proper adjustability and ergonomic support.</p>
+                          
+                        <img src="images/15-2.jpg" alt="" data-animate="bounceIn" data-delay="1600" class="center content-img-streches-content img-res-auto-70" style="margin-top:30px;" />
+                          
+                          <p class="lead topmargin-sm text-left" data-animate="bounceInLeft" data-delay="800" style="border:rgba(0,114,197,1.0) 5px solid;padding:5px;">Exercise balls, treadmills, and bicycle desks help in exercising while working.</p>
+
+
+
+                      </div>
+
+
+                    </div>
+
+                  </div>
+
+
+
+                </div>
+              </div>
+            </div>
+
+
+            <div id="15" class="section parallax full-screen nomargin noborder" style="background-image: url('images/slider/swiper/15.jpg');" data-stellar-background-ratio="0.4">
+              <div class="vertical-middle vertical-middle-resize3-1024">
+                <div class="container clearfix">
+
+                  <audio controls class="audioElement" style="opacity:0;">
+                    <source src="audio/slide17.mp3" type="audio/mpeg">
+                    <p>If you can read this, your browser does not support the audio element.</p>
+                  </audio>
+                  <div class="col-lg-6 nobottommargin emphasis-title center nobottomborder bounceIn" data-animate="bounceInLeft" data-delay="400">
+                    <h2 class="text-left">Take Pauses and Breaks</h2>                 
+                    <div class="emphasis-title" data-animate="bounceInLeft" data-delay="800">
+                      <p class="lead topmargin-sm text-left" data-animate="bounceInLeft" data-delay="800">It is better to take several short breaks rather than one long one. Ways to do this include:</p>
+
+
+
+                    </div>
+
+                  </div>
+
+                  <div class="col-lg-6 nobottommargin">
+                    <div class="emphasis-title center" data-animate="bounceIn" data-delay="1200">
+                      <img src="images/16.png" alt="" data-animate="bounceIn" data-delay="1600" class="center img-resize15-80 img-resize-80 img-resize1-80" style="width:90%;margin-top:-20px;" />
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+
+
+
+            <div id="16" class="section parallax full-screen nomargin noborder" style="background-image: url('images/slider/swiper/16.jpg');" data-stellar-background-ratio="0.4">
+                <div class="vertical-middle vertical-middle-resize3-1024">
+                    <div class="container clearfix">
+
+                        <audio controls class="audioElement" style="opacity:0;">
+                            <source src="audio/slide18.mp3" type="audio/mpeg">
+                            <p>If you can read this, your browser does not support the audio element.</p>
+                        </audio>
+                        <div class="col-lg-12 nobottommargin emphasis-title center nobottomborder bounceIn" data-animate="bounceInLeft" data-delay="400">
+                            <h2 class="text-left">Set Up Your Workstation Right</h2>
+                        </div>
+                        <div class="col-lg-12 nobottommargin">
+                            <div class="emphasis-title" data-animate="bounceInLeft" data-delay="800">
+                                <p class="lead font-size-20 topmargin-sm" data-animate="bounceInLeft" data-delay="800">Besides your body posture, it is important to set up your workstation right because you need:</p>
+
+                                <!-- process steps  -->
+<!-- 
+                                <div id="processTabs">
+                                    <ul class="process-steps bottommargin clearfix text-center-res">
+                                        <li>
+                                            <a href="#ptab1" class="i-circled i-bordered i-alt divcenter">1</a>
+
+                                        </li>
+                                        <li>
+                                            <a href="#ptab2" class="i-circled i-bordered i-alt divcenter">2</a>
+
+                                        </li>
+                                        <li>
+                                            <a href="#ptab3" class="i-circled i-bordered i-alt divcenter">3</a>
+
+                                        </li>
+                                        <li>
+                                            <a href="#ptab4" class="i-circled i-bordered i-alt divcenter">4</a>
+
+                                        </li>
+                                        <li>
+                                            <a href="#ptab5" class="i-circled i-bordered i-alt divcenter">5</a>
+
+                                        </li>
+                                    </ul>
+
+                                    <div class="tabs-content">
+                                        <div id="ptab1">
+
+                                            <p class="lead font-size-20 topmargin-sm">1. Adequate height, space and work surface to suit the type of work.</p>
+
+                                            <div class="tab-img">
+
+                                                <img src="images/tabs/stand.jpg" alt="Ergonomics" class="img-responsive" />
+                                            </div>
+
+
+
+                                        </div>
+                                        <div id="ptab2">
+
+                                            <p class="lead font-size-20 topmargin-sm">
+                                                2. Space to position all the equipment in such a way that the body posture or
+                                                vision is not compromised.
+                                            </p>
+                                            <div class="tab-img">
+
+                                                <img src="images/tabs/space.jpg" alt="Ergonomics" class="img-responsive" />
+                                            </div>
+                                        </div>
+                                        <div id="ptab3">
+                                            <p class="lead font-size-20 topmargin-sm">
+                                                3. A flat smooth surface and at an appropriate level to keep monitor, keyboard
+                                                and mouse.
+                                            </p>
+                                            <div class="tab-img">
+
+                                                <img src="images/tabs/monitor.jpg" alt="Ergonomics" class="img-responsive" />
+                                            </div>
+                                        </div>
+                                        <div id="ptab4">
+                                            <p class="lead font-size-20 topmargin-sm">
+                                                4. Adequate clearance for legs under the desktop and sufficient space to comfortably
+                                                stretch legs.
+                                            </p>
+                                            <div class="tab-img">
+
+                                                <img src="images/tabs/footer.jpg" alt="Ergonomics" class="img-responsive" />
+                                            </div>
+                                        </div>
+                                        <div id="ptab5">
+                                            <p class="lead font-size-20 topmargin-sm">
+                                                5. Flexibility to move or adjust equipment and sitting/standing arrangement.
+                                            </p>
+                                            <div class="tab-img">
+
+                                                <img src="images/tabs/flex.jpg" alt="Ergonomics" class="img-responsive" />
+                                            </div>
+                                        </div>
+
+                                    </div>
+
+
+                                </div>
+
+ -->
+
+
+
+                        <div class="emphasis-title" data-animate="bounceIn" data-delay="1200">
+                        <img src="images/17-1.png" alt="" data-animate="bounceIn" data-delay="1600" class="image17"/>
+                        <img src="images/17-2.png" alt="" data-animate="bounceIn" data-delay="1600" class="image17"/>
+                        <img src="images/17-3.png" alt="" data-animate="bounceIn" data-delay="1600" class="image17"/>
+                        <img src="images/17-4.png" alt="" data-animate="bounceIn" data-delay="1600" class="image17"/>
+                        <img src="images/17-5.png" alt="" data-animate="bounceIn" data-delay="1600" class="image17"/>
+
+                    </div>
+                    <div class="clearfix"></div>
+
+
+                            </div>
+
+                        </div>
+
+
+
+                    </div>
+                </div>
+            </div>
+
+
+
+            <div id="17" class="section parallax full-screen nomargin noborder" style="background-image: url('images/slider/swiper/17.jpg');" data-stellar-background-ratio="0.4">
+
+              <div class="vertical-middle vertical-middle-resize3-1024 pagespadding" style="position: absolute; top: 50%; width: 100%; padding-top: 0px; padding-bottom: 0px; margin-top: -293.5px;">
+                <div class="container clearfix paddingcss">
+
+                  <audio controls class="audioElement" style="opacity:0;">
+                    <source src="audio/slide19.mp3" type="audio/mpeg">
+                    <p>If you can read this, your browser does not support the audio element.</p>
+                  </audio>
+                  <div class="col-lg-12 nobottommargin emphasis-title left nobottomborder bounceIn bounceInLeft animated" data-animate="bounceInLeft" data-delay="400">
+                    <h2>Position the Monitor Right</h2>
+                  </div>
+
+
+                  <div class="col-lg-12 nobottommargin">
+                    <p class="lead topmargin-sm left" data-animate="bounceInLeft" data-delay="800">
+                      Incorrect positioning of the monitor screen can result in awkward postures. This is how you should place the monitor:
+                    </p>
+
+
+                  </div>
+
+
+                  <div class="col-lg-7 nobottommargin">
+
+                    <div class="emphasis-title bounceInLeft animated" data-animate="bounceInLeft" data-delay="1200">
+
+                      <p class="lead topmargin-sm headhi line-height-1024" data-animate="bounceIn" data-delay="1200">
+                        Adjust the monitor so that your neck is in a neutral and relaxed position.
+                      </p>
+
+                      <p class="lead topmargin-sm headhi line-height-1024" data-animate="bounceIn" data-delay="1800">
+                        Centre the monitor directly in front of you above your keyboard.
+                      </p>
+
+                      <p class="lead topmargin-sm headhi line-height-1024" data-animate="bounceIn" data-delay="2200">
+                        If you wear bifocals, lower the monitor to a comfortable reading level.
+                      </p>
+
+                      <p class="lead topmargin-sm headhi line-height-1024" data-animate="bounceIn" data-delay="2600">
+                        Sit at least an arm's length away from the screen and then adjust the distance for your vision.
+                      </p>
+
+                      <p class="lead topmargin-sm headhi line-height-1024" data-animate="bounceIn" data-delay="3000">
+                        The top third of the monitor should be at eye level to avoid straining the neck.
+                      </p>
+
+                      <p class="lead topmargin-sm headhi line-height-1024" data-animate="bounceIn" data-delay="3400">
+                        Tilt the monitor down a little to avoid reflection.
+                      </p>
+
+                      <p class="lead topmargin-sm headhi line-height-1024" data-animate="bounceIn" data-delay="3800">
+                        Dual monitor should be of the same size, placed side by side, and at the same height. Both monitors should be at a comfortable distance and height for viewing.
+                      </p>
+
+                    </div>
+
+                  </div>
+
+                  <div class="col-lg-5 nobottommargin">
+
+                    <div class="emphasis-title bounceInLeft animated text-center-res img-center-1024" data-animate="bounceInLeft" data-delay="4200">
+                      <img src="images/1.jpg" alt="" data-animate="bounceInRight" data-delay="4200" class="content-img img-resize-100 img-resize5-80 emphasis-title-resize5-1024">
+                    </div>
+
+
+                  </div>
+
+                </div>
+              </div>
+            </div>
+
+
+
+            <div id="18" class="section parallax full-screen nomargin noborder" style="background-image: url('images/slider/swiper/18.jpg');" data-stellar-background-ratio="0.4">
+
+              <div class="vertical-middle pagespadding vertical-middle-resize3-1024" style="position: absolute; top: 50%; width: 100%; padding-top: 0px; padding-bottom: 0px;">
+                <div class="container clearfix paddingcss">
+                  <audio controls class="audioElement" style="opacity:0;">
+                    <source src="audio/slide20.mp3" type="audio/mpeg">
+                    <p>If you can read this, your browser does not support the audio element.</p>
+                  </audio>
+
+                  <div class="col-lg-12 nobottommargin emphasis-title left nobottomborder " data-animate="bounceInLeft" data-delay="400">
+                    <h2>Place the Keyboard Properly</h2>
+                       <p class="lead topmargin-sm headhi " data-animate="bounceInLeft" data-delay="800">An appropriate positioning of the keyboard helps you to maintain the correct sitting posture. Hers’s where and how the keyboard should be placed:</p>
+                  </div>
+
+                  <div class="col-lg-6 nobottommargin">
+
+                    <div class="emphasis-title " data-animate="bounceInLeft" data-delay="800">
+
+                     
+
+                      <ul class="lead topmargin-sm " style="margin-left:50px;" data-animate="bounceIn" data-delay="1200">
+                        <li data-animate="bounceInLeft" data-delay="1200">Position the keyboard directly in front of your body, 1 to 2 inches above your thighs.</li>
+						
+                        <li data-animate="bounceInLeft" data-delay="1800">
+                          Adjust the keyboard height so that your shoulders, elbows, wrists, and hands are relaxed and at proper position.
+                        </li>
+                        <li data-animate="bounceInLeft" data-delay="2200">
+                          The keyboard should lay flat. Don not elevate the back of the keyboard.
+                        </li>
+                        <li data-animate="bounceInLeft" data-delay="2600">
+                          Use the keyboard tray or keyboard feet to adjust the tilt. 
+						  
+                          <ul style="margin-left:50px;">
+						  
+                            <li data-animate="bounceInLeft" data-delay="3000">If you sit in a forward or upright position, try tilting your keyboard away from you at a negative angle. </li>
+                            <li data-animate="bounceInLeft" data-delay="3400">If you are reclined, a slight positive tilt helps in maintaining a straight wrist position.</li>
+                          </ul>
+                        </li>
+
+                        <li data-animate="bounceInLeft" data-delay="3800">The tray should not place you too close or too far from other equipment and resources.</li>
+                      </ul>
+                    </div>
+
+                  </div>
+
+                  <div class="col-lg-6 nobottommargin">
+
+                    <div class="emphasis-title img-center-1024" data-animate="bounceInLeft" data-delay="400">
+
+                      
+
+                      <img src="images/18-2.jpg" alt="" data-animate="bounceInRight" data-delay="4200" class="content-img img-resize-80">
+
+
+
+                    </div>
+
+
+                  </div>
+
+                </div>
+              </div>
+            </div>
+
+
+      
+
+
+
+            <div id="19" class="section parallax full-screen nomargin noborder" style="background-image: url('images/slider/swiper/20.jpg');" data-stellar-background-ratio="0.4">
+              <div class="vertical-middle vertical-middle-resize-1024 pagespadding" style="position: absolute; top: 50%; width: 100%; padding-top: 0px; padding-bottom: 0px;">
+                <div class="container clearfix paddingcss padding-50">
+
+                  <audio controls class="audioElement" style="opacity:0;">
+                    <source src="audio/slide21.mp3" type="audio/mpeg">
+                    <p>If you can read this, your browser does not support the audio element.</p>
+                  </audio>
+                  <div class="col-lg-12 nobottommargin emphasis-title left nobottomborder " data-animate="bounceInLeft" data-delay="400">
+                    <h2>Hold the Mouse Appropriately</h2>
+                  </div>
+
+
+                  <div class="col-lg-6 nobottommargin">
+
+                    <div class="emphasis-title text-center-res img-center-1024" data-animate="bounceInLeft" data-delay="400" style="margin-top:25px;">
+
+                      <img src="images/20.jpg" alt="" data-animate="bounceInLeft" data-delay="400" class="content-img img-resize-80">
+
+
+
+                    </div>
+
+
+                  </div>
+                  <div class="col-lg-6 nobottommargin">
+
+                    <div class="emphasis-title " data-animate="bounceIn" data-delay="800" style="margin-top:25px;">
+
+                      <ul class="lead topmargin-sm headhi" data-animate="bounceIn" data-delay="800">
+                        <li data-animate="bounceIn" data-delay="1200">Keep mouse at the same height and as close to the keyboard as possible.</li>
+                        <li data-animate="bounceIn" data-delay="1800">Ensure that it fits comfortably in hand to minimise any undue pressure on the wrist and forearm.</li>
+                        <li data-animate="bounceIn" data-delay="2200">Ensure that there is enough space and flat smooth surface to keep it so that the wrist can be kept straight.</li>
+                        <li data-animate="bounceIn" data-delay="2600">Choose a wireless mouse that fits your hand comfortably and keeps your fingers relaxed and slightly curved. </li>
+                        <li data-animate="bounceIn" data-delay="3000">If the device is used for long periods, move the device towards the centre of the desk and temporarily reposition the keyboard.</li>
+                      </ul>
+                    </div>
+
+                  </div>
+
+
+
+                </div>
+              </div>
+            </div>
+
+
+
+            <div id="20" class="section parallax full-screen nomargin noborder" style="background-image: url('images/slider/swiper/21.jpg');" data-stellar-background-ratio="0.4">
+              <div class="vertical-middle page22margin" id="Chair">
+                <div class="container clearfix">
+                  <audio controls class="audioElement" style="opacity:0;">
+                    <source src="audio/slide22.mp3" type="audio/mpeg">
+                    <p>If you can read this, your browser does not support the audio element.</p>
+                  </audio>
+
+                  <div class="col-lg-12 nobottommargin emphasis-title center nobottomborder bounceIn" data-animate="bounceInLeft" data-delay="400" >
+                    <h2 class="text-left">How Do You Use Your Chair?</h2>
+                  </div>
+                  <div class="col-lg-12 nobottommargin">
+                    <div class="emphasis-title" data-animate="bounceInLeft" data-delay="800">
+                      <p class="lead topmargin-sm " data-animate="bounceInLeft" data-delay="800">How do you sit on your office chair?&nbsp;&nbsp;Which way do you think is the correct way? </p>
+                      <div class="emphasis-title center" data-animate="bounceIn" data-delay="1200">
+
+                          <div class="fslider" style="height:400px;">
+                              <div class="flexslider" style="height:100%;">
+                                  <div class="slider-wrap" style="height:100%;">
+                                      <div class="slide"><img src="images/21-1.jpg" alt="Slider 1"></div>
+                                      <div class="slide"><img src="images/21-2.jpg" alt="Slider 2"></div>
+                                  </div>
+                              </div>
+                          </div>
+                          
+                              <!-- <img src="images/21-1.jpg" alt="" data-animate="bounceIn" data-delay="1600" class="center content-img" style="width:32%;margin-top:-10px" />
+         <img src="images/21-2.jpg" alt="" data-animate="bounceIn" data-delay="1600" class="center content-img" style="width:32%;margin-top:-10px" />-->
+</div>
+
+
+                    </div>
+
+                  </div>
+
+
+
+                </div>
+              </div>
+            </div>
+
+
+
+            <div id="21" class="section parallax full-screen nomargin noborder" style="background-image: url('images/slider/swiper/22.jpg');" data-stellar-background-ratio="0.4">
+              <div class="vertical-middle page22margin vertical-middle-resize3-1024" style="position: absolute; top: 50%; width: 100%; padding-top: 0px; padding-bottom: 0px;">
+                <div class="container clearfix">
+
+                  <audio controls class="audioElement" style="opacity:0;">
+                    <source src="audio/slide23.mp3" type="audio/mpeg">
+                    <p>If you can read this, your browser does not support the audio element.</p>
+                  </audio>
+                  <div class="col-lg-12 nobottommargin emphasis-title left nobottomborder " data-animate="bounceInLeft" data-delay="400">
+                    <h2>Maintain Correct Posture on the Chair</h2>
+                  </div>
+
+                  <div class="col-lg-12 nobottommargin">
+
+                    <div class="emphasis-title" data-animate="bounceInLeft" data-delay="400">
+                      <p class="lead topmargin-sm center" data-animate="bounceInLeft" data-delay="800" style="text-align:left !important;"> The chair supports your back, bottom, and posture. This is how you should sit:</p>
+
+                    </div>
+
+                  </div>
+
+
+                  <div class="col-lg-5 nobottommargin">
+
+                    <div class="emphasis-title text-center-res img-center-1024" data-animate="bounceInLeft" data-delay="400">
+
+                      <img src="images/1.jpg" alt="" data-animate="bounceInLeft" data-delay="400" class="content-img img-resize-70-margin img-resize-80 img-resize8-80">
+
+
+                    </div>
+
+
+                  </div>
+                  <div class="col-lg-7 nobottommargin">
+
+                    <div class="emphasis-title " data-animate="bounceIn" data-delay="800" >
+					<ul style="padding:00px">
+                      <li class="lead nomargin left " data-animate="bounceIn headhi" data-delay="1200">
+                        Push your hips as far back as they can go in the chair. There should be a little space between the edge of the chair and the back of your knees.
+                      </li>
+					  
+                      <li class="lead nomargin left " data-animate="bounceIn headhi" data-delay="1800">
+                        Adjust the seat height so your feet are flat on the floor and your knees equal to or slightly lower than your hips.
+                      </li>
+					  
+                      <li class="lead nomargin left " data-animate="bounceIn headhi" data-delay="2200 ">
+                        Adjust the back of the chair to a 100°-110° reclined angle. Make sure that your upper and lower back are supported.
+                      </li>
+					  
+                      <li class="lead nomargin left " data-animate="bounceIn headhi" data-delay="2600 ">
+                        Use inflatable cushions or small pillows, if necessary. If you have an active back mechanism on your chair, use it to make frequent position changes.
+                      </li>
+					  
+                      <li class="lead nomargin left " data-animate="bounceIn headhi" data-delay="3000 ">
+                        Adjust the armrests so that your shoulders are relaxed. If your armrests are in the way, remove them.
+                      </li>
+					  
+					 </ul>
+                    </div>
+
+                  </div>
+
+
+
+                </div>
+              </div>
+            </div>
+
+
+
+            <div id="22" class="section parallax full-screen nomargin noborder" style="background-image: url('images/slider/swiper/23.jpg');" data-stellar-background-ratio="0.4">
+              <div class="vertical-middle pagespadding vertical-middle-resize3-1024" style="position: absolute; top: 50%; width: 100%; padding-top: 0px; padding-bottom: 0px;">
+                <div class="container clearfix">
+
+                  <audio controls class="audioElement" style="opacity:0;">
+                    <source src="audio/slide24.mp3" type="audio/mpeg">
+                    <p>If you can read this, your browser does not support the audio element.</p>
+                  </audio>
+                  <div class="col-lg-12 nobottommargin emphasis-title left nobottomborder " data-animate="bounceInLeft" data-delay="400">
+                    <h2>Keep Sufficient Lighting</h2>
+                  </div>
+                    <div class="col-lg-12 nobottommargin">
+                         <div class="emphasis-title margin-top-30" data-animate="bounceIn" data-delay="800" style="20px;">
+                         <p class="lead" data-animate="bounceIn" data-delay="800">
+                        An office setting with too much artificial or natural light can create monitor glare that quickly tires your eyes. Artificial light combined with natural light and your monitor's backlight puts unavoidable stress on your eyes.
+                      </p>
+                        
+                           <div class="col-lg-8 nobottommargin">
+                     
+                    <ul class="lead topmargin-sm " style="padding:0px 50px" data-animate="bounceIn" data-delay="800">   
+                           <li data-animate="bounceIn" data-delay="1200"> Don’t use harsh fluorescent lights.</li>
+                          <li data-animate="bounceIn" data-delay="1200">  Position the computer in such a way that natural light comes from either side of the monitor. Light should never be directed behind or in front of your screen.</li>
+                       <li data-animate="bounceIn" data-delay="1200">     Use floor or desk lamps and position them on either side of your monitor so that they provide indirect lighting.</li>
+                        <li data-animate="bounceIn" data-delay="1200">    Reduce glare by careful positioning of the monitor screen.</li>
+                         <li data-animate="bounceIn" data-delay="1200">   Place screen at right angles to windows.</li>
+                         <li data-animate="bounceIn" data-delay="1200">   Adjust curtains or blinds, as needed.</li>
+                         <li data-animate="bounceIn" data-delay="1200">   Adjust the vertical screen angle and screen controls to minimize glare from overhead lights.</li>
+                         <li data-animate="bounceIn" data-delay="1200">   Use techniques to reduce glare, such as use optical glass glare filters, light filters, or secondary task lights.</li>
+                      </ul>
+                    </div>
+                    
+                  </div>
+                  <div class="col-lg-4 nobottommargin">
+
+                    <div class="emphasis-title text-center-res img-center-1024" data-animate="bounceInLeft" data-delay="400">
+
+                      <img src="images/3.jpg" alt="" data-animate="bounceInLeft" data-delay="400" class="content-img img-resize-70-margintop35 img-resize9-80">
+
+
+                    </div>
+
+
+                  </div>
+                    </div>
+                    
+
+               
+
+
+
+
+                </div>
+              </div>
+            </div>
+
+
+
+            <div id="23" class="section parallax full-screen nomargin noborder" style="background-image: url('images/slider/swiper/24.jpg');" data-stellar-background-ratio="0.4">
+              <div class="vertical-middle page22margin vertical-middle-resize3-1024">
+                <div class="container clearfix">
+
+                  <audio controls class="audioElement" style="opacity:0;">
+                    <source src="audio/slide25.mp3" type="audio/mpeg">
+                    <p>If you can read this, your browser does not support the audio element.</p>
+                  </audio>
+                  <div class="col-lg-12 nobottommargin emphasis-title center nobottomborder bounceIn" data-animate="bounceInLeft" data-delay="400" style="margin-top:15px;">
+                    <h2 class="text-left margin-bottom-30">Place Documents Appropriately</h2>
+                  </div>
+                  <div class="col-lg-5 nobottommargin">
+                   
+                      <div class="emphasis-title img-center-1024" data-animate="bounceIn" data-delay="800">
+                        <img src="images/24.jpg" alt="" data-animate="bounceIn" data-delay="800" class="center content-img img-res-auto img-resize-80" style="width:90%" />
+                      </div>
+                       </div>
+                    <div class="col-lg-7 nobottommargin">
+                      <p class="lead nomargin text-left" data-animate="bounceIn" data-delay="1200">Place the documents as close as possible to the screen. </p>
+                      <p class="lead nomargin text-left" data-animate="bounceIn" data-delay="1600">
+                        Put them at the same height and viewing distance as the screen.
+                      </p>
+                      <p class="lead nomargin text-left" data-animate="bounceIn" data-delay="2000">Use a copy holder to position the reading documents directly in front of you between the monitor and the keyboard. </p>
+                      <p class="lead nomargin text-left" data-animate="bounceIn" data-delay="2400">If there is insufficient space, place the documents on the holder and position them adjacent to the monitor.</p>
+
+                      <p class="lead nomargin text-left" data-animate="bounceIn" data-delay="2800">Use an angled reading/writing board or document holder to improve neck posture. </p>
+                    </div>
+
+                </div>
+              </div>
+            </div>
+
+
+
+            <div id="24" class="section parallax full-screen nomargin noborder" style="background-image: url('images/slider/swiper/25.jpg');" data-stellar-background-ratio="0.4">
+              <div class="vertical-middle pagespadding vertical-middle-resize3-1024">
+                <div class="container clearfix">
+                  <audio controls class="audioElement" style="opacity:0;">
+                    <source src="audio/slide26.mp3" type="audio/mpeg">
+                    <p>If you can read this, your browser does not support the audio element.</p>
+                  </audio>
+
+                  <div class="col-lg-12 nobottommargin emphasis-title center nobottomborder bounceIn" data-animate="bounceInLeft" data-delay="400">
+                    <h2 class="text-left">Position and Use Telephone Correctly</h2>
+                  </div>
+                  <div class="col-lg-12 nobottommargin">
+                    <div class="emphasis-title" data-animate="bounceInLeft" data-delay="800">
+                      <p class="lead topmargin-sm center" data-animate="bounceInLeft" data-delay="800" style="text-align:left !important;">
+                        Like documents and other equipment, telephones should be placed within your primary work zone.
+                      </p>
+                      <div class="emphasis-title center" data-animate="bounceIn" data-delay="1200">
+                        <img src="images/25-1-1.png" alt="" data-animate="bounceIn" data-delay="1600" class="img-res-auto img-resize-30" style="width:20%" />
+                        <img src="images/25-1-2.png" alt="" data-animate="bounceIn" data-delay="1600" class="img-res-auto img-resize-30" style="width:20%" />
+                        <img src="images/25-1-3.png" alt="" data-animate="bounceIn" data-delay="1600" class="img-res-auto img-resize-30" style="width:20%" />
+                        <img src="images/25-1-4.png" alt="" data-animate="bounceIn" data-delay="1600" class="img-res-auto img-resize-30" style="width:20%" />
+                        <img src="images/25-2.jpg" alt="" data-animate="bounceIn" data-delay="1600" class="center img-res-auto img-resize-40" style="width:19%" />
+                      </div>
+
+
+                    </div>
+
+                  </div>
+
+
+
+                </div>
+              </div>
+            </div>
+
+
+
+            <div id="25" class="section parallax full-screen nomargin noborder" style="background-image: url('images/slider/swiper/26.jpg');" data-stellar-background-ratio="0.4">
+              <div class="vertical-middle pagespadding vertical-middle-resize3-1024" style="position: absolute; top: 50%; width: 100%; padding-top: 0px; padding-bottom: 0px;">
+                <div class="container clearfix paddingcss">
+                  <audio controls class="audioElement" style="opacity:0;">
+                    <source src="audio/slide27.mp3" type="audio/mpeg">
+                    <p>If you can read this, your browser does not support the audio element.</p>
+                  </audio>
+
+                  <div class="col-lg-12 nobottommargin emphasis-title left nobottomborder " data-animate="bounceInLeft" data-delay="400">
+                    <h2>Use Storage Areas Appropriately</h2>
+                  </div>
+
+
+
+                  <div class="col-lg-7 nobottommargin">
+
+                    <div class="emphasis-title " data-animate="bounceIn" data-delay="800">
+
+                      <p class="lead topmargin-sm left" data-animate="bounceIn headhi" data-delay="1200">Workstation storage areas include overhead cupboards, bookshelves, filing cabinets, and desk drawers. Here are some tips on the usage of storage areas:</p>
+                      <ul class="lead topmargin-sm " style="padding:0px 50px" data-animate="bounceIn" data-delay="800">
+                        <li data-animate="bounceIn" data-delay="1200">Use storage areas for items that are not used very often.</li>
+                        <li data-animate="bounceIn" data-delay="1800">Store heavy objects, such as boxes of copy paper and racks, between shoulder and knee height to avoid excessive reaching out and twisting.</li>
+                        <li data-animate="bounceIn" data-delay="2200">Do not clutter leg space under the desk. Keep it free to stretch legs or change posture while working.</li>
+                      </ul>
+
+                    </div>
+
+                  </div>
+                  <div class="col-lg-5 nobottommargin">
+
+                    <div class="emphasis-title text-center-res img-center-1024" data-animate="bounceInLeft" data-delay="400">
+
+                      <img src="images/26.jpg" alt="" data-animate="bounceInLeft" data-delay="400" class="content-img img-resize-80">
+
+
+                    </div>
+
+
+                  </div>
+
+
+
+
+                </div>
+              </div>
+            </div>
+
+
+
+            <div id="26" class="section parallax full-screen nomargin noborder" style="background-image: url('images/slider/swiper/27.jpg');" data-stellar-background-ratio="0.4">
+              <div class="vertical-middle pagespadding vertical-middle-resize3-1024" style="position: absolute; top: 50%; width: 100%; padding-top: 0px; padding-bottom: 0px;">
+                <div class="container clearfix">
+                  <audio controls class="audioElement" style="opacity:0;">
+                    <source src="audio/slide28.mp3" type="audio/mpeg">
+                    <p>If you can read this, your browser does not support the audio element.</p>
+                  </audio>
+
+                  <div class="col-lg-12 nobottommargin emphasis-title left nobottomborder " data-animate="bounceInLeft" data-delay="400">
+                    <h2 class="text-left">Use Laptops and Mobiles Devices Conveniently</h2>
+                  </div>
+
+                  <div class="col-lg-6 nobottommargin">
+                    <div class="emphasis-title text-center-res img-center-1024" data-animate="bounceInLeft" data-delay="400" style="margin-top:25px;">
+                      <img src="images/27.jpg" alt="" data-animate="bounceInLeft" data-delay="400" class="content-img img-resize-80">
+                    </div>
+                  </div>
+                  <div class="col-lg-6 nobottommargin">
+                    <div class="emphasis-title " data-animate="bounceIn" data-delay="800" style="margin-top:25px;">
+
+                      <ul class="lead topmargin-sm headhi" data-animate="bounceIn" data-delay="800">
+                        <li data-animate="bounceIn" data-delay="1200">When using a laptop for significant periods or when being used as a desk top replacement, use separate components (full sized peripherals) that allow for better posture and can be independently adjusted. </li>
+                        <li data-animate="bounceIn" data-delay="180s0">If you use laptop regularly for work, set up a work station with an adjustable chair, stand alone keyboard and wireless mouse. </li>
+                        <li data-animate="bounceIn" data-delay="2200">Studies have shown that typing on a tab-touch screen is eight times harder than typing with a keyboard. If you have to type more than a paragraph on a touch screen device, use an external keyboard. </li>
+                      </ul>
+                    </div>
+
+                  </div>
+
+
+
+                </div>
+              </div>
+            </div>
+
+            <div id="27" class="section parallax full-screen nomargin noborder" style="background-image: url('images/slider/swiper/28.jpg');" data-stellar-background-ratio="0.4">
+              <div class="vertical-middle vertical-middle-resize3-1024">
+                <div class="container clearfix">
+
+                  <audio controls class="audioElement" style="opacity:0;">
+                    <source src="audio/slide29.mp3" type="audio/mpeg">
+                    <p>If you can read this, your browser does not support the audio element.</p>
+                  </audio>
+                  <div class="col-lg-12 nobottommargin emphasis-title center nobottomborder bounceIn" data-animate="bounceInLeft" data-delay="400">
+                    <h2 class="text-left">Handle Smartphones Appropriately</h2>
+                  </div>
+                  <div class="col-lg-12 nobottommargin">
+                    <div class="emphasis-title" data-animate="bounceInLeft" data-delay="800">
+
+                      <div class="emphasis-title center" data-animate="bounceIn" data-delay="1200">
+                        <img src="images/28-1.png" alt="" data-animate="bounceIn" data-delay="1600" class="center img-res-auto" style="width:15%;" />
+                          <ul class="timeline">
+                              <li>
+                                  
+                                  <div class="timeline-panel">                                      
+                                      <div class="timeline-body">
+                                          <p>Before texting, tackle sitting properly first.</p>
+                                      </div>
+                                  </div>
+                              </li>
+                              <li class="timeline-inverted">
+                                  
+                                  <div class="timeline-panel">                                    
+                                      <div class="timeline-body">
+                                          <p>Maintain the phone at your chest, chin, or eye level (preferably) to minimize the bend in your neck and to maintain optimal posture.</p>
+                                          
+                                      </div>
+                                  </div>
+                              </li>
+                              <li>
+                                
+                                  <div class="timeline-panel">                                     
+                                      <div class="timeline-body">
+                                          <p>Swipe with the index finger of the opposite hand.</p>
+                                      </div>
+                                  </div>
+                              </li>
+                              <li class="timeline-inverted">
+                                  <div class="timeline-panel">                                     
+                                      <div class="timeline-body">
+                                          <p>Type with both hands or thumbs.</p>
+                                      </div>
+                                  </div>
+                              </li>
+                              <li>
+                                 
+                                  <div class="timeline-panel">
+                                     
+                                      <div class="timeline-body">
+                                          <p>Don’t type with one thumb only.</p>
+                                         
+                                      </div>
+                                  </div>
+                              </li>
+                              <li class="timeline-inverted">
+                                 
+                                  <div class="timeline-panel">
+                                    
+                                      <div class="timeline-body">
+                                          <p>Don’t look at the device for too long. Look 30 feet away from the screen.</p>
+                                      </div>
+                                  </div>
+                              </li>
+                              <li >
+                                  
+                                  <div class="timeline-panel">
+
+                                      <div class="timeline-body">
+                                          <p>Exercise your thumb by rotating it both clockwise and anti-clockwise.</p>
+                                      </div>
+                                  </div>
+                              </li>
+                          </ul>
+                      </div>
+
+
+                    </div>
+
+                  </div>
+
+
+
+                </div>
+              </div>
+            </div>
+
+
+            <div id="28" class="section parallax full-screen nomargin noborder" style="background-image: url('images/slider/swiper/29.jpg');" data-stellar-background-ratio="0.4">
+              <div class="vertical-middle page21margin vertical-middle-resize6-1024" style="position: absolute; top: 50%; width: 100%; padding-top: 0px; padding-bottom: 0px;">
+                  <p>&nbsp;</p>
+                <div class="container clearfix paddingcss">
+
+                  <audio controls class="audioElement" style="opacity:0;">
+                    <source src="audio/slide30.mp3" type="audio/mpeg">
+                    <p>If you can read this, your browser does not support the audio element.</p>
+                  </audio>
+                  <div class="col-lg-12 nobottommargin emphasis-title left nobottomborder " data-animate="bounceInLeft" data-delay="400">
+                    <h2 style="margin-bottom:10px !important;">Improve Ergonomics Smartly</h2>
+                  </div>
+
+
+                  <div class="col-lg-6 nobottommargin">
+                    <div class="emphasis-title " data-animate="bounceIn" data-delay="800">
+
+                      <ul class="lead topmargin-sm headhi" data-animate="bounceIn" data-delay="800">
+                        <li data-animate="bounceIn" data-delay="1200">If you don’t have a foot rest, use a concrete box, a study box, or piece of wood.  </li>
+                        <li data-animate="bounceIn" data-delay="1800">Use desk risers to raise a stationary desk to a comfortable position. </li>
+                        <li data-animate="bounceIn" data-delay="2200">Use risers, rims of paper, or hardcover books to raise your monitor to the right height. </li>
+                        <li data-animate="bounceIn" data-delay="2600">Use holders to place documents, stationary, and mobile devices at a particular place and position.</li>
+                      </ul>
+                    </div>
+
+                  </div>
+
+                  <div class="col-lg-6 nobottommargin">
+                    <div class="emphasis-title text-center-res img-center-1024" data-animate="bounceInLeft" data-delay="400">
+                      <img src="images/29.jpg" alt="" data-animate="bounceInLeft" data-delay="400" class="content-img img-resize-80 img-resize12-80">
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+
+
+
+
+            <div id="29" class="section parallax full-screen nomargin noborder" style="background-image: url('images/slider/swiper/30.jpg');" data-stellar-background-ratio="0.4">
+              <div class="vertical-middle vertical-middle-resize3-1024">
+                <div class="container clearfix" style="margin-top: -30px !important;">
+                  <audio controls class="audioElement" style="opacity:0;">
+                    <source src="audio/slide31.mp3" type="audio/mpeg">
+                    <p>If you can read this, your browser does not support the audio element.</p>
+                  </audio>
+
+                  <div class="col-lg-12 nobottommargin emphasis-title nobottomborder bounceIn" data-animate="bounceInLeft" data-delay="400">
+                    <h2 class="margin-bottom-5">Summary</h2>
+                  </div>
+                  <div class="col-lg-12 nobottommargin nomargin">
+                    <div class="emphasis-title" data-animate="bounceInLeft" data-delay="800">
+
+                      <div class="center" data-animate="bounceIn" data-delay="1200">
+                        <!-- <img src="images/30.jpg" alt="" data-animate="bounceIn" data-delay="1600" class="center content-img" style="width:85%" /> -->
+                        <div class="" id="summary-page">
+                            <div class="col-md-6 col-sm-6 text-left padding-0">
+                                <div class="col-md-12 summary-bg padding-0 bg-pink">
+                                    <img src="images/36-4.jpg" class="col-md-4 padding-0">
+                                    <h2 class="col-md-4 h2center">Correct</h2>
+                                    <div class="col-md-4"></div>
+                                </div>
+                        <div class="bg-white col-md-12 correctheight">        
+                            <p>Head  should be up and straight</p>
+                            <p>Eyes  must look forward most of the time</p>
+                            <p>Shoulders must be relaxed</p>
+                            <p>Back should be erect and supported</p>
+                            <p>Hands must be in line with forearms</p>
+                            <p>Feet must firmly lie on the foot rest</p>
+                            <p>Monitor should be at eye height approximately and at arms distance</p>
+                            <p>Reference documents must be easy to find at a workstation</p>
+
+                        </div>
+                            </div>
+                            <div class="col-md-6 col-sm-6 text-left padding-0">
+                                <div class="col-md-12 summary-bg padding-0 bg-pink">
+                                    <div class="col-md-4"></div>
+                                    <h2 class="col-md-4 hidden-sm">Incorrect</h2>
+                                    <img src="images/36-5.jpg" class="col-md-4 hidden-sm padding-0 text-right">
+                                     <img src="images/36-5.jpg" class="col-md-4 hidden-md hidden-xs hidden-lg padding-0 text-right">
+                                    <h2 class="col-md-4 hidden-md hidden-xs hidden-lg h2center">Incorrect</h2>
+                                   
+                                </div>
+                                
+                        <div class="bg-white col-md-12">
+                            <p>Head should not bend forward, backward, or sideward</p>
+                            <p>Eyes must not be looking up or down most of the time</p>
+                            <p>Shoulders should not be rounded</p>
+                            <p>Back must be not be bent and unsupported</p>
+                            <p>Hands should not be raised or tilted downwards with respect to wrists and forearms</p>
+                            <p>Feet should not be kept hanging, far away, or folded behind.</p>
+                            <p>Monitor must not be lower than eye level or placed far</p>
+                            <p>Reference documents should not be scattered and kept far way at a workstation</p>
+                     </div>
+                            </div>
+                           
+                        </div>
+
+                      </div>
+
+
+                    </div>
+
+                  </div>
+
+
+
+                </div>
+              </div>
+            </div>
+
+            <!-- #Quiz -->
+
+
+
+            <div id="Q1" class="section parallax full-screen nomargin noborder" style="background-image: url('images/slider/swiper/31.jpg');" data-stellar-background-ratio="0.4">
+              <div class="vertical-middle pagespadding vertical-middle-resize3-1024">
+                <div class="container clearfix">
+
+
+                  <div class="col-lg-12 nobottommargin emphasis-title center nobottomborder bounceIn" data-animate="bounceInLeft" data-delay="400">
+                    <h2 class="text-left">Check Your Understanding 1</h2>
+                  </div>
+                  <div class="col-lg-12 nobottommargin">
+
+                    <div class="emphasis-title" data-animate="bounceInLeft" data-delay="800">
+                      <p class="lead topmargin-sm qtext" data-animate="bounceInLeft" data-delay="800">
+                       Drag the box mentioning the appropriate body position and drop it in the box corresponding to relevant body part.
+                      </p>
+                        <!-- <div class="row">
+        <div class="col-md-2 col-xs-2"><div class="heading">Questions</div></div>
+        <div class="col-md-4 col-xs-5"><div class="heading">Answers</div></div>
+        <div class="col-md-6 col-xs-5"><div class="heading">Options</div></div>
+      </div> -->
+      
+      <div class="row">
+        <div class="col-md-2 col-xs-12">
+          <div class="question-ans boxcolor">Neck</div>
+        </div>
+        <div class="col-md-4 col-xs-12 div1 ui-droppable" ondrop="drop(event, this)" ondragover="allowDrop(event)"></div>
+        <div class="col-md-6 col-xs-12 text-center hidediv dragdiv">
+          <div class="question-ans">
+          <div id="drag1" draggable="true" ondrop="return false" ondragover="return false" ondragstart="drag(event)">Should not extend forward.</div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="row">
+        <div class="col-md-2 col-xs-12">
+          <div class="question-ans boxcolor">Chin</div>
+        </div>
+        <div class="col-md-4 col-xs-12 div1 ui-droppable" ondrop="drop(event, this)" ondragover="allowDrop(event)"></div>
+        <div class="col-md-6 col-xs-12 text-center hidediv dragdiv">
+        <div class="question-ans">
+          <div id="drag2" draggable="true" ondrop="return false" ondragover="return false" ondragstart="drag(event)">Should not be rounding.</div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="row">
+        <div class="col-md-2 col-xs-12">
+          <div class="question-ans boxcolor">Shoulders</div>
+        </div>
+        <div class="col-md-4 col-xs-12 div1 ui-droppable" ondrop="drop(event, this)" ondragover="allowDrop(event)"></div>
+        <div class="col-md-6 col-xs-12 text-center hidediv dragdiv">
+        <div class="question-ans">
+          <div id="drag3" draggable="true" ondrop="return false" ondragover="return false" ondragstart="drag(event)">Should be 20-30 inches away from the monitor.</div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="row">
+        <div class="col-md-2 col-xs-12">
+          <div class="question-ans boxcolor">Eyes</div>
+        </div>
+        <div class="col-md-4 col-xs-12 div1 ui-droppable" ondrop="drop(event, this)" ondragover="allowDrop(event)"></div>
+        <div class="col-md-6 col-xs-12 text-center hidediv dragdiv">
+        <div class="question-ans">
+          <div id="drag4" draggable="true" ondrop="return false" ondragover="return false" ondragstart="drag(event)">Should be in the neutral and relaxed position.</div>
+          </div>
+        </div>
+      </div>
+
+
+                    </div>
+
+
+                  </div>
+
+                  <div class="emphasis-title" data-animate="bounceInLeft" data-delay="800">
+
+                    <div class="emphasis-title center" data-animate="bounceIn" data-delay="1200">
+                    </div>
+
+
+                  </div>
+
+                </div>
+
+
+
+              </div>
+            </div>
+
+
+
+            <div id="Q2" class="section parallax full-screen nomargin noborder" style="background-image: url('images/slider/swiper/32.jpg');" data-stellar-background-ratio="0.4">
+              <div class="vertical-middle pagespadding vertical-middle-resize3-1024">
+                <div class="container clearfix">
+
+
+                  <div class="col-lg-12 nobottommargin emphasis-title left nobottomborder bounceIn" data-animate="bounceInLeft" data-delay="400">
+                    <h2>Check Your Understanding 2</h2>
+                  </div>
+                  <div class="col-lg-12 nobottommargin">
+
+                    <div class="emphasis-title" data-animate="bounceInLeft" data-delay="800">
+                      <p class="lead topmargin-sm left qtext" data-animate="bounceInLeft" data-delay="800">Which of the following body postures should be considered to avoid ergonomic injuries?</p>
+
+                      <p class="lead topmargin-sm left" data-animate="bounceInLeft" data-delay="1200">Select the ones that apply:</p>
+
+                      <div style="margin-left:30px; margin-top:15px;">
+
+                        <p>
+                          <label class="lead left" data-animate="bounceInLeft" data-delay="1600">
+                            <input type="checkbox" name="CheckboxGroup1" value="checkbox" id="CheckboxGroup1_0">
+                            The elbows should be open making an angle of 100°-110°.
+                          </label>
+                          <br>
+                          <label class="lead left" data-animate="bounceInLeft" data-delay="2000">
+                            <input type="checkbox" name="CheckboxGroup1" value="checkbox" id="CheckboxGroup1_1">
+                            The thighs should be at level or slightly above the hips.
+                          </label>
+                          <br>
+                          <label class="lead left" data-animate="bounceInLeft" data-delay="2400">
+                            <input type="checkbox" name="CheckboxGroup1" value="checkbox" id="CheckboxGroup1_2">
+                            The head should be straight so that the top of the monitor is at the eye level.
+                          </label>
+                          <br>
+                          <label class="lead left" data-animate="bounceInLeft" data-delay="2800">
+                            <input type="checkbox" name="CheckboxGroup1" value="checkbox" id="CheckboxGroup1_3">
+                            The feet should be tucked behind.
+                          </label>
+                          <br>
+                        </p>
+                          <a href="#" class="sub-btn">Submit</a>
+                      </div>
+
+                    </div>
+
+                     
+                  </div>
+
+
+
+                </div>
+
+                
+
+              </div>
+            </div>
+
+
+
+            <div id="Q3" class="section parallax full-screen nomargin noborder" style="background-image: url('images/slider/swiper/33.jpg');" data-stellar-background-ratio="0.4">
+              <div class="vertical-middle pagespadding vertical-middle-resize3-1024">
+                <div class="container clearfix">
+
+
+                  <div class="col-lg-12 nobottommargin emphasis-title center nobottomborder bounceIn" data-animate="bounceInLeft" data-delay="400">
+                    <h2 style="text-align:left;">Check Your Understanding 3</h2>
+                  </div>
+                  <div class="col-lg-12 nobottommargin">
+
+                    <div class="emphasis-title" data-animate="bounceInLeft" data-delay="800">
+                      <p class="lead topmargin-sm center qtext" data-animate="bounceInLeft" data-delay="800" style="text-align:left !important;">
+                        Drag the box mentioning the equipment and drop it in the box mentioning its correct placement on a workstation.
+                      </p>
+
+                      <div class="row">
+        <div class="col-md-2 col-xs-12">
+          <div class="question-ans boxcolor">Monitor</div>
+        </div>
+        <div class="col-md-4 col-xs-12 div1 ui-droppable" ondrop="drop(event, this)" ondragover="allowDrop(event)"></div>
+        <div class="col-md-6 col-xs-12 text-center hidediv dragdiv">
+          <div class="question-ans">
+          <div id="drag5" draggable="true" ondrop="return false" ondragover="return false" ondragstart="drag(event)">Should fit comfortably in such a way that minimises pressure on the forearm and wrist.</div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="row">
+        <div class="col-md-2 col-xs-12">
+          <div class="question-ans boxcolor">Keyboard</div>
+        </div>
+        <div class="col-md-4 col-xs-12 div1 ui-droppable" ondrop="drop(event, this)" ondragover="allowDrop(event)"></div>
+        <div class="col-md-6 col-xs-12 text-center hidediv dragdiv">
+        <div class="question-ans">
+          <div id="drag6" draggable="true" ondrop="return false" ondragover="return false" ondragstart="drag(event)">Should be at least an arm's length away.</div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="row">
+        <div class="col-md-2 col-xs-12">
+          <div class="question-ans boxcolor">Mouse</div>
+        </div>
+        <div class="col-md-4 col-xs-12 div1 ui-droppable" ondrop="drop(event, this)" ondragover="allowDrop(event)"></div>
+        <div class="col-md-6 col-xs-12 text-center hidediv dragdiv">
+        <div class="question-ans">
+          <div id="drag7" draggable="true" ondrop="return false" ondragover="return false" ondragstart="drag(event)">Should be adjusted at a height so that the feet are flat on the floor.</div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="row">
+        <div class="col-md-2 col-xs-12">
+          <div class="question-ans boxcolor">Chair</div>
+        </div>
+        <div class="col-md-4 col-xs-12 div1 ui-droppable" ondrop="drop(event, this)" ondragover="allowDrop(event)"></div>
+        <div class="col-md-6 col-xs-12 text-center hidediv dragdiv">
+        <div class="question-ans">
+          <div id="drag8" draggable="true" ondrop="return false" ondragover="return false" ondragstart="drag(event)">Should be in front, 1-2 inches above the thighs.</div>
+          </div>
+        </div>
+      </div>
+
+                    </div>
+
+
+                  </div>
+
+                  <div class="emphasis-title" data-animate="bounceInLeft" data-delay="800">
+
+                    <div class="emphasis-title center" data-animate="bounceIn" data-delay="1200">
+                    </div>
+
+
+                  </div>
+
+                </div>
+
+
+
+              </div>
+            </div>
+
+
+            <div id="Q4" class="section parallax full-screen nomargin noborder" style="background-image: url('images/slider/swiper/34.jpg');" data-stellar-background-ratio="0.4">
+              <div class="vertical-middle pagespadding vertical-middle-resize3-1024">
+                <div class="container clearfix">
+
+
+                  <div class="col-lg-12 nobottommargin emphasis-title left nobottomborder bounceIn" data-animate="bounceInLeft" data-delay="400">
+                    <h2>Check Your Understanding 4</h2>
+                  </div>
+                  <div class="col-lg-12 nobottommargin">
+
+                    <div class="emphasis-title" data-animate="bounceInLeft" data-delay="800">
+                      <p class="lead topmargin-sm left qtext" data-animate="bounceInLeft" data-delay="800">Which of the following options should be considered regarding lighting on your workstation?</p>
+
+                      <p class="lead topmargin-sm left" data-animate="bounceInLeft" data-delay="1200">Select the ones that apply:</p>
+
+                      <div style="margin-left:30px; margin-top:15px;">
+
+                        <p>
+                          <label class="lead left" data-animate="bounceInLeft" data-delay="1600">
+                            <input type="checkbox" name="CheckboxGroup1" value="checkbox" id="CheckboxGroup1_0">
+                            Fluorescent lights should be used for a workstation.
+                          </label>
+                          <br>
+                          <label class="lead left" data-animate="bounceInLeft" data-delay="2000">
+                            <input type="checkbox" name="CheckboxGroup1" value="checkbox" id="CheckboxGroup1_1">
+                            Natural light should come from either side of the monitor.
+                          </label>
+                          <br>
+                          <label class="lead left" data-animate="bounceInLeft" data-delay="2400">
+                            <input type="checkbox" name="CheckboxGroup1" value="checkbox" id="CheckboxGroup1_2">
+                            Light should be directed from behind or in front of the screen.
+                          </label>
+                          <br>
+                          <label class="lead left" data-animate="bounceInLeft" data-delay="2800">
+                            <input type="checkbox" name="CheckboxGroup1" value="checkbox" id="CheckboxGroup1_3">
+                            Glare should be reduced by careful positioning of the monitor screen.
+                          </label>
+                          <br>
+                          <label class="lead left" data-animate="bounceInLeft" data-delay="3200">
+                            <input type="checkbox" name="CheckboxGroup1" value="checkbox" id="CheckboxGroup1_4">
+                            Monitor screen should be placed at right angles to the windows.
+                          </label>
+                        </p>
+
+                          <a href="#" class="sub-btn" >Submit</a>
+                      </div>
+
+                    </div>
+
+                    
+
+                  </div>
+
+
+
+                </div>
+
+                
+
+              </div>
+            </div>
+
+
+
+            <div id="Q5" class="section parallax full-screen nomargin noborder" style="background-image: url('images/slider/swiper/35.jpg');" data-stellar-background-ratio="0.4">
+              <div class="vertical-middle pagespadding vertical-middle-resize3-1024">
+                <div class="container clearfix">
+
+
+                  <div class="col-lg-12 nobottommargin emphasis-title left nobottomborder bounceIn" data-animate="bounceInLeft" data-delay="400">
+                    <h2>Check Your Understanding 5</h2>
+                  </div>
+                  <div class="col-lg-12 nobottommargin">
+
+                    <div class="emphasis-title" data-animate="bounceInLeft" data-delay="800">
+                      <p class="lead topmargin-sm left qtext" data-animate="bounceInLeft" data-delay="800">Which of the following best practices you can follow at your workplace to prevent yourself from ergonomic injuries?</p>
+
+                      <p class="lead topmargin-sm left" data-animate="bounceInLeft" data-delay="1200">Select the ones that apply:</p>
+
+                      <div style="margin-left:30px; margin-top:15px;">
+
+                        <p>
+                          <label class="lead left" data-animate="bounceInLeft" data-delay="1600">
+                            <input type="checkbox" name="CheckboxGroup1" value="checkbox" id="CheckboxGroup1_0">
+                            Take a break for at least 5-10 minutes after each hour of work.
+                          </label>
+                          <br>
+                          <label class="lead left" data-animate="bounceInLeft" data-delay="2000">
+                            <input type="checkbox" name="CheckboxGroup1" value="checkbox" id="CheckboxGroup1_1">
+                            Do some stretches at the end of the day.
+                          </label>
+                          <br>
+                          <label class="lead left" data-animate="bounceInLeft" data-delay="2400">
+                            <input type="checkbox" name="CheckboxGroup1" value="checkbox" id="CheckboxGroup1_2">
+                            Look 20 feet away for 20 seconds every 20 minutes to relax the eyes.
+                          </label>
+                          <br>
+                          <label class="lead left" data-animate="bounceInLeft" data-delay="2800">
+                            <input type="checkbox" name="CheckboxGroup1" value="checkbox" id="CheckboxGroup1_3">
+                            Do not combine sitting and standing alternatively while working on a computer.
+                          </label>
+                          <br>
+                          <label class="lead left" data-animate="bounceInLeft" data-delay="3200">
+                            <input type="checkbox" name="CheckboxGroup1" value="checkbox" id="CheckboxGroup1_4">
+                            Use smart ways to improve the ergonomics of the workstation.
+                          </label>
+                        </p>
+                          <a href="#" class="sub-btn" >Submit</a>
+                      </div>
+
+                    </div>
+                     
+
+                  </div>
+
+
+
+                </div>
+
+                 
+
+              </div>
+            </div>
+
+
+
+            <div id="Q6" class="section parallax full-screen nomargin noborder" style="background-image: url('images/slider/swiper/35.jpg');" data-stellar-background-ratio="0.4">
+              <div class="vertical-middle pagespadding vertical-middle-resize3-1024">
+                <div class="container clearfix">
+                  <div class="col-lg-12 nobottommargin emphasis-title left nobottomborder bounceIn" data-animate="bounceInLeft" data-delay="400">
+                    <h2 style="margin-top:-15px !important;">Check Your Understanding 6</h2>
+                  </div>
+                  <div class="col-lg-12 nobottommargin">
+
+                    <div class="emphasis-title" data-animate="bounceInLeft" data-delay="800">
+                      <p class="lead topmargin-sm left qtext nobottommargin" data-animate="bounceInLeft" data-delay="800">Which of the following images show ergonomically <u>incorrect</u> postures? </p>
+
+                      <p class="lead topmargin-sm left nobottommargin" data-animate="bounceInLeft" data-delay="1200">Select the ones that apply:</p>
+
+                      <div style="margin-left:30px; margin-top:15px;" class="row">
+
+                        
+                          
+
+                          <label class="lead left col-md-3 col-sm-6" data-animate="bounceInLeft" data-delay="1600">
+                            <input type="checkbox" name="CheckboxGroup1" value="checkbox" id="CheckboxGroup1_0">
+                            <img src="images/36-1.jpg" alt="" data-animate="bounceInLeft" data-delay="400" class="content-img test" style="width:100%;">
+                          </label>
+
+                          <label class="lead left col-md-3  col-sm-6" data-animate="bounceInLeft" data-delay="2000">
+                            <input type="checkbox" name="CheckboxGroup1" value="checkbox" id="CheckboxGroup1_1">
+                            <img src="images/36-2.jpg" alt="" data-animate="bounceInLeft" data-delay="400" class="content-img test" style="width:100%;">
+                          </label>
+
+                          <label class="lead left col-md-3 hidden-sm" data-animate="bounceInLeft" data-delay="2400">
+                            <input type="checkbox" name="CheckboxGroup1" value="checkbox" id="CheckboxGroup1_2">
+                            <img src="images/36-3.jpg" alt="" data-animate="bounceInLeft" data-delay="400" class="content-img test" style="width:100%;">
+                          </label>
+                            
+                        </div>
+                        <div style="margin-left:30px; margin-top:15px;" class="row">
+                            
+                            <label class="lead left col-sm-6 hidden-md hidden-lg hidden-xs" data-animate="bounceInLeft" data-delay="2400">
+                            <input type="checkbox" name="CheckboxGroup1" value="checkbox" id="CheckboxGroup1_2">
+                            <img src="images/36-3.jpg" alt="" data-animate="bounceInLeft" data-delay="400" class="content-img test" style="width:100%;">
+                          </label>
+
+                          <label class="lead left col-md-3 col-sm-6" data-animate="bounceInLeft" data-delay="2800">
+                            <input type="checkbox" name="CheckboxGroup1" value="checkbox" id="CheckboxGroup1_3">
+                            <img src="images/36-4.jpg" alt="" data-animate="bounceInLeft" data-delay="400" class="content-img test" style="width:100%;">
+                          </label>
+
+                          <label class="lead left col-md-3 col-sm-6" data-animate="bounceInLeft" data-delay="3200">
+                            <input type="checkbox" name="CheckboxGroup1" value="checkbox" id="CheckboxGroup1_4">
+                            <img src="images/36-5.jpg" alt="" data-animate="bounceInLeft" data-delay="400" class="content-img test" style="width:100%;">
+                          </label>
+
+                          <label class="lead left col-md-3 col-sm-6" data-animate="bounceInLeft" data-delay="3600">
+                            <input type="checkbox" name="CheckboxGroup1" value="checkbox" id="CheckboxGroup1_5">
+                            <img src="images/36-6.jpg" alt="" data-animate="bounceInLeft" data-delay="400" class="content-img test" style="width:100%;">
+                          </label>
+                          <label class="lead left col-md-12" data-animate="bounceInLeft" data-delay="2800">
+                              <a href="#" class="sub-btn">Submit</a>
+                          </label>
+                        </div>
+
+                    </div>
+
+                     
+                  </div>
+
+
+
+                </div>
+
+                
+
+              </div>
+            </div>
+
+            <div id="Q7" class="section parallax full-screen nomargin noborder" style="background-image: url('images/slider/swiper/35.jpg');" data-stellar-background-ratio="0.4">
+              <div class="vertical-middle">
+                <div class="container clearfix">
+
+
+                  <div class="col-lg-12 nobottommargin emphasis-title left nobottomborder bounceIn" data-animate="bounceInLeft" data-delay="400">
+                    <h2></h2>
+                  </div>
+                  <div class="col-lg-12 nobottommargin">
+
+                    <div class="emphasis-title" data-animate="bounceInLeft" data-delay="800">
+
+                    </div>
+
+                  </div>
+
+
+                </div>
+
+
+
+              </div>
+
+
+
+            </div>
+
+
+          </div>
+          </div>
+        
+
+
+      </section>
+
+
+
+      <!-- #content end -->
+
+      <!-- Footer
+============================================= -->
+      <!-- #footer end -->
+
+        <!-- Modal 1-->
+        <div class="modal fade" id="myModal1" role="dialog">
+            <div class="modal-dialog">
+
+                <!-- Modal content-->
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal"><i class="fa fa-times" aria-hidden="true"></i></button>
+
+                    </div>
+                    <div class="modal-body">
+                        <p><strong>Arm and wrist:</strong> Sitting or standing tall, extend one arm forward with palm facing outwards (and inwards alternatively) and fingers pointing downwards. Keeping elbow slightly bent, use opposite hand to gently press extended hand inwards to feel a stretch along forearm and wrist. Hold 5 seconds and repeat 5 times.</p>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+        <!-- Modal 2-->
+        <div class="modal fade" id="myModal2" role="dialog">
+            <div class="modal-dialog">
+
+                <!-- Modal content-->
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal"><i class="fa fa-times" aria-hidden="true"></i></button>
+
+                    </div>
+                    <div class="modal-body">
+                        <p><strong>Hip/thigh:</strong> Place one hand on a stable surface for support. Slightly bend supporting knee and lift the other foot behind to grasp ankle. Gently pull leg up behind you
+and press hips forwards to stretch front of thigh and hip region. Hold 5 seconds and repeat 5 times.
+</p>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+
+
+        <!-- Modal 3-->
+        <div class="modal fade" id="myModal3" role="dialog">
+            <div class="modal-dialog">
+
+                <!-- Modal content-->
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal"><i class="fa fa-times" aria-hidden="true"></i></button>
+
+                    </div>
+                    <div class="modal-body">
+                        <p><strong>Side bend:</strong> Raise one arm directly overhead while leaning sideways from the waist. Lean towards opposite side to stretch entire side of the waist and hip. Hold 5 seconds and repeat 5 times.</p>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+
+
+        <!-- Modal 4-->
+        <div class="modal fade" id="myModal4" role="dialog">
+            <div class="modal-dialog">
+
+                <!-- Modal content-->
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal"><i class="fa fa-times" aria-hidden="true"></i></button>
+
+                    </div>
+                    <div class="modal-body">
+                        <p><strong>Calf:</strong> Stand arm’s length from the wall and place hands at chest level for support. Step forward with one foot and bend knee. Step backwards with opposite foot and straighten until stretch is felt along the back of thigh and calf. You may need to lean forward towards the wall to increase the stretch. Hold 5 seconds and repeat 5 times.</p>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+
+
+        <!-- Modal 5-->
+        <div class="modal fade" id="myModal5" role="dialog">
+            <div class="modal-dialog">
+
+                <!-- Modal content-->
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal"><i class="fa fa-times" aria-hidden="true"></i></button>
+
+                    </div>
+                    <div class="modal-body">
+                        <p><strong>Hamstring:</strong> Slightly bend knee of supporting leg. Step forward with opposite heel and place on ground so toes are pointing upwards. To increase stretch, slowly increase bent of supporting knee and move forward through waist. Hold 5 seconds and repeat 5 times.</p>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+
+      <!--search popup-->
+        <div style="" id="searchResultsPopup" class="popup">
+            <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                <tbody>
+                    <tr>
+                        <td class="searchresults-header">
+
+                            <div class="Search-input-div" id="searchInputDiv" title="Search Text">
+                                <input type="text" class="Search-input" id="searchInput" maxlength="50">
+                            </div>
+                            <div class="search-btn-get" id="searchBtnGet" title="Search">
+                                <i class="fa fa-search" aria-hidden="true"></i>
+                                <!--  <span>Search</span>  -->
+                            </div>
+                            <div class="searchpopupClose" id="closeSearchPopup" title="Close">X</div>
+                            <div class="popup-minimize" id="minimize-popup" title="Close">
+                                <i class="fa fa-minus" aria-hidden="true"></i>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td valign="top">
+                            <div id="Searchresult">
+                                <ul class="searchresults"></ul>
+                                <ul class="noresults"></ul>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+    </div><!-- #wrapper end -->	
+	</div>
+
+
+    <!-- Go To Top
+============================================= -->
+
+    <!-- Footer Scripts
+============================================= -->
+    <script type="text/javascript" src="js/jquery.js"></script>
+    <script type="text/javascript" src="js/plugins.js"></script>
+    <script type="text/javascript" src="js/jquery.flip.min.js"></script>    
+    <script type="text/javascript" src="js/functions.js"></script>
+    <script src="scripts/dragdrop.js"></script>
+      <script>
+      
+          if (screen && screen.width && $(window).width() > 768) {
+              document.write('<script type="text/javascript" src="js/jquery.fullPage.js"><\/script>');
+          }
+      </script>
+
+      <script type="text/javascript" src="js/jquery.highlight.js"></script>
+    <script>
+        jQuery(document).ready(function ($) {
+
+
+            $("#processTabs").tabs({ show: { effect: "fade", duration: 400 } });
+            $(".tab-linker").click(function () {
+                $("#processTabs").tabs("option", "active", $(this).attr('rel') - 1);
+                return false;
+            });
+
+        var swiperSlider = new Swiper('.swiper-parent', {
+          paginationClickable: false,
+          slidesPerView: 1,
+          grabCursor: true,
+          onSwiperCreated: function (swiper) {
+            $('[data-caption-animate]').each(function () {
+              var $toAnimateElement = $(this);
+              var toAnimateDelay = $(this).attr('data-caption-delay');
+              var toAnimateDelayTime = 0;
+              if (toAnimateDelay) { toAnimateDelayTime = Number(toAnimateDelay) + 750; } else { toAnimateDelayTime = 750; }
+              if (!$toAnimateElement.hasClass('animated')) {
+                $toAnimateElement.addClass('not-animated');
+                var elementAnimation = $toAnimateElement.attr('data-caption-animate');
+                setTimeout(function () {
+                  $toAnimateElement.removeClass('not-animated').addClass(elementAnimation + ' animated');
+                }, toAnimateDelayTime);
+              }
+            });
+              
+
+          },
+          onSlideChangeStart: function (swiper) {
+            $('#slide-number-current').html(swiper.activeIndex + 1);
+            $('[data-caption-animate]').each(function () {
+              var $toAnimateElement = $(this);
+              var elementAnimation = $toAnimateElement.attr('data-caption-animate');
+              $toAnimateElement.removeClass('animated').removeClass(elementAnimation).addClass('not-animated');
+            });
+          },
+          onSlideChangeEnd: function (swiper) {
+            $('#slider .swiper-slide').each(function () {
+              if ($(this).find('video').length > 0) { $(this).find('video').get(0).pause(); }
+            });
+            $('#slider .swiper-slide:not(".swiper-slide-active")').each(function () {
+              if ($(this).find('video').length > 0) {
+                if ($(this).find('video').get(0).currentTime != 0) $(this).find('video').get(0).currentTime = 0;
+              }
+            });
+            if ($('#slider .swiper-slide.swiper-slide-active').find('video').length > 0) { $('#slider .swiper-slide.swiper-slide-active').find('video').get(0).play(); }
+
+            $('#slider .swiper-slide.swiper-slide-active [data-caption-animate]').each(function () {
+              var $toAnimateElement = $(this);
+              var toAnimateDelay = $(this).attr('data-caption-delay');
+              var toAnimateDelayTime = 0;
+              if (toAnimateDelay) { toAnimateDelayTime = Number(toAnimateDelay) + 300; } else { toAnimateDelayTime = 300; }
+              if (!$toAnimateElement.hasClass('animated')) {
+                $toAnimateElement.addClass('not-animated');
+                var elementAnimation = $toAnimateElement.attr('data-caption-animate');
+                setTimeout(function () {
+                  $toAnimateElement.removeClass('not-animated').addClass(elementAnimation + ' animated');
+                }, toAnimateDelayTime);
+              }
+            });
+          }
+        });
+
+        $('#slider-arrow-left').on('click', function (e) {
+          e.preventDefault();
+          swiperSlider.swipePrev();
+        });
+
+        $('#slider-arrow-right').on('click', function (e) {
+          e.preventDefault();
+          swiperSlider.swipeNext();
+        });
+
+        $('#slide-number-current').html(swiperSlider.activeIndex + 1);
+        $('#slide-number-total').html(swiperSlider.slides.length);
+      });
+    </script>
+      
+      <srcipt type="text/javascript">
+      window.onload = function() {
+        document.getElementByTagName("audio").play();
+                                }
+      
+      </srcipt>
+    
+    <script type="text/javascript">
+    
+        $(document).ready(function () {
+            //var anchorsArray = [];
+
+            //$('.section').each(function (i) {
+            //    anchorsArray.push(i);
+            //});
+            //console.log(anchorsArray);
+            
+            var element = $('.audioElement');
+            element.appear(function () {
+                var that = $(this);
+                setTimeout(function () {
+
+                    
+
+                    element.each(function (i) {                       
+                        element[i].pause();
+                        $(this).removeClass('playAudio');
+
+                    });
+                    that.addClass('playAudio');
+                    $('.playAudio')[0].play();
+
+
+                }, 1000);
+            });
+            var audio = $('.audioElement');
+            $('.mute-btn').click(function () {
+                $(this).toggleClass('muteAudio');
+                audio.each(function (i) {
+                    element[i].muted = !element[i].muted                   
+
+
+                });
+
+            });
+
+            $("#searchBtnGet").click(function () {
+
+                var word = $("#searchInput").val();
+                if (word != "") {
+                    if (word != "$" || word != "^") {
+                        $("span").removeClass("sarechresult")
+                        $(".resultlink").parent().remove();
+                        $("#content").unhighlight();
+                        $(".noresultlink").parent().remove();
+                        $("#content").highlight(word);
+                        searchItems();
+                        if ($("ul.searchresults").children().length == 0) {
+                            $(".noresultlink").parent().remove();
+                            $("ul.noresults").append("<li><div class='noresultlink'>No results found</div></li>");
+                        }
+                        else {
+                            $(".noresultlink").parent().remove();
+                        }
+                        if ($("#searchInput").val() == "") {
+                            $(".noresultlink").parent().remove();
+                        }
+                    }
+                }
+                else {
+                    alert("Please enter atleast one word to search");
+                }
+            });
+            $('#searchInput').keypress(function (e) {
+                if (e.which == 13) {//Enter key pressed
+                    $('#searchBtnGet').trigger('click');//Trigger search button click event
+                }
+            });
+
+
+            $('.pause-btn').click(function () {                
+                $('.playAudio')[0].pause();
+                $(this).addClass('hide-pausebtn');
+                $('.play-btn').addClass('show-playbtn');
+            });
+
+            $('.play-btn').click(function () {
+                $('.playAudio')[0].play();
+                $(this).removeClass('show-playbtn');
+               $('.pause-btn').removeClass('hide-pausebtn');
+
+            });
+
+
+            $('.searchresults').hover(function () {
+                $.fn.fullpage.setMouseWheelScrolling(false);
+            },function(){
+                $.fn.fullpage.setMouseWheelScrolling(true);
+            });
+
+            $('body').on('click', '.resultlink', function (e) {
+                e.preventDefault();
+              
+                var id = $(this).attr('href');
+                var element = $(id).offset();                
+                $("body").scrollTop((element.top-200));
+
+            });
+            $('body').on('click', '.overlay-menu-close', function (e) {
+             
+                e.preventDefault();
+                $('#primary-menu > ul, #primary-menu > div > ul').toggleClass("show");
+                var id = $(this).attr('href');
+                var element = $(id).offset();
+                $("body").scrollTop((element.top));
+            });
+            $('body').on('click', '#overlay-menu-close', function (e) {
+                e.preventDefault();
+                $('#primary-menu > ul, #primary-menu > div > ul').toggleClass("show");                
+            });
+            $('.sf-js-enabled, #overlay-menu-close').hover(function () {
+			
+                $.fn.fullpage.setMouseWheelScrolling(false);
+                $('body').css('overflow', 'auto');
+            }, function () {
+                $.fn.fullpage.setMouseWheelScrolling(true);
+                $('body').css('overflow', 'inherit');
+            });
+
+
+            $('.search-btn').click(function () {
+
+                $(this).toggleClass('show-search');
+
+                if ($('.search-btn').hasClass('show-search')) {
+
+                    $('#searchResultsPopup').animate({ 'right': '0' }, 500);
+                } else {
+                    $('#searchResultsPopup').animate({ 'right': '-400px' }, 500);
+                }
+            });
+
+            $('body').on('click', '#closeSearchPopup', function () {
+                $('#searchResultsPopup').animate({ 'right': '-400px' }, 500);
+                $("#content").unhighlight();
+            });
+         
+           if (screen && screen.width && $(window).width() > 1024) {  
+
+        $('.fullpage').fullpage({
+          verticalCentered: true,
+          anchors: ['', '2page', '3page', '4page', '5page', '6page', '7page', '8page', '9page', '10page', '11page', '12page', '13page', '14page', '15page', '16page', '17page', '18page', '19page', '20page', '21page', '22page', '23page', '24page', '25page', '26page', '27page', '28page', '29page', '30page', '31page', '32page', '33page', '34page', '35page', '36page', '37page'],
+          scrollBar: true,
+            onLeave: function (index, nextIndex, direction) {
+             if (direction == 'up') {
+                
+                  if($('.section').find('.addcss').length > 0){
+                  $('.section').find('.container.clearfix').removeClass('addcss').addClass('removecss');
+                  }
+                  if(index == 2)
+                  {
+                      $('#slider').css('top','-120px');
+                  }else{
+                      $('#slider').css('top','-120px');
+                  }
+                  
+              } else {
+                 $('.section').find('.container.clearfix').addClass('addcss');
+              }
+          }
+        });
+    }
+
+        if ($(window).width() < 480) {
+            $.fn.fullpage.setMouseWheelScrolling(false);
+        }
+            
+              
+        $(window).resize(function () {
+
+            if ($(window).width() < 480) {
+                $.fn.fullpage.setMouseWheelScrolling(false);
+            }
+
+        });
+
+      });
+      function searchItems() {
+          var word = $("#searchInput").val();
+          var fullresults = [];
+          $("#content .highlighted").each(function (i) {
+              //var pagobj = new Object();
+              $(this).attr('id', 'highlighted' + i);
+              var str = $(this).parent().text();
+              results = searchForWord(str, word);
+              
+              for (var m = 0; m < results.length; m++) {
+                  fullresults.push("<a  class='resultlink' href='#highlighted"+i+"'>" + results[m] + "</a>");
+              }
+          });
+         
+          for (var k = 0; k < fullresults.length; k++) {
+              $("ul.searchresults").append("<li>" + fullresults[k] + "</li>");
+             
+          }
+      }
+
+      function searchForWord(str, word) {
+
+
+          if (word == "") {
+              word = null;
+          }
+          var spclword = word;
+          var specialChar = /[-\\!$%^&*()_+|~=`{}\[\]:";'<>?,.\/]/;
+          for (var i = 0; i < spclword.length; i++) {
+              if (specialChar.test(spclword[i])) {
+                  spclword = spclword.substr(0, i) + "\\" + spclword.substr(i);
+                  i++
+              }
+          }
+          var re = new RegExp(spclword, "gim");
+          var searchresults = [];
+          while ((match = re.exec(str)) != null) {
+              var position = match.index;
+              try {
+                  var matchresult = "";
+                  if (position >= 20) {
+                      matchresult = "...";
+                      for (var j = (position - 25) ; j <= position; j++) {
+                          if (str[j] == " ") {
+                              for (var i = j + 1; i <= (position + word.length + 20) ; i++) {
+                                  if (i == (position)) {
+                                      matchresult = matchresult + '<span class=' + 'sarechresult' + '>';
+                                  }
+                                  if (i == (position + word.length)) {
+                                      matchresult = matchresult + '</span>'
+                                  }
+                                  matchresult = matchresult + str[i];
+                                  if (i >= (position + word.length + 10)) {
+                                      if (str[i + 1] == " ") {
+                                          matchresult = matchresult + "..."
+                                          { break }
+                                      }
+                                  }
+                                  if (str[i + 1] == undefined)
+                                  { break }
+                              }
+                              j = position;
+                          }
+                      }
+                  }
+                  else {
+
+                      for (var i = 0; i < (position + word.length + 20) ; i++) {
+                          if (i == (position)) {
+                              matchresult = matchresult + '<span class=' + 'sarechresult' + '>';
+                          }
+                          if (i == (position + word.length)) {
+                              matchresult = matchresult + '</span>'
+                          }
+                          matchresult = matchresult + str[i];
+                          if (str[i + 1] == undefined)
+                          { break }
+                          if (i >= (position + word.length + 10)) {
+                              if (str[i + 1] == " ") {
+                                  {
+                                      matchresult = matchresult + "..."
+                                      break
+                                  }
+                              }
+                          }
+                      }
+                  }
+
+              } catch (e) {
+                  alert("No results found");
+
+              }
+              searchresults.push(matchresult);
+              //alert(matchresult);
+              matchresult = "";
+              //breaking while loop on forst match
+              { break }
+          }
+
+          return searchresults;
+      }
+
+    </script>
+      
+<script type="text/javascript">
+    
+    function addmargin()
+    {
+       
+        $("#startbtn").click(function(){
+               $(".container").css("margin-bottom", "500px;");
+            })
+          
+    }
+    
+</script>
+   
+<script type="text/javascript">
+// drag and drop list
+
+function allowDrop(ev) {
+  ev.preventDefault();
+  
+}
+
+function NotallowDrop(ev) {
+  
+}
+
+function drag(ev) {
+  ev.dataTransfer.setData("text", ev.target.id);
+}
+
+//function drop(ev) {
+//  ev.preventDefault();
+//  var data = ev.dataTransfer.getData("text");
+//  ev.target.appendChild(document.getElementById(data));
+//  var x = data;
+//  x = null;
+//}
+  
+function drop(ev, el) {
+  ev.preventDefault();
+  var data = ev.dataTransfer.getData("text");
+  el.appendChild(document.getElementById(data));
+    $('.hidediv > .question-ans').each(function(){
+        if($(this).children().length == 0){
+            $(this).addClass('emptyQues');
+        }
+        
+    });
+        
+    $('.emptyQues').parent().hide();
+       
+}
+
+
+$(document).ready(function(){
+    if($(window).width() < 768){
+    $(".div1").click(function(){
+       var a = $(this).$(".div1").next().eq(0).eq(0).html;
+       alert(a);
+    });
+}
+});
+    
+
+
+    </script>
+
+      
+
+
+  </body>
+</html>
